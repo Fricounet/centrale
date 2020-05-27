@@ -19,6 +19,7 @@ const FetchDataExample = () => {
       const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
       const responseJson = await response.json();
       setIsLoaded(true);
+      setError(false);
       setItems(responseJson.results);
     } catch (error) {
       setIsLoaded(true);
@@ -29,6 +30,8 @@ const FetchDataExample = () => {
   useEffect(() => {
     setIsLoaded(false);
     fetchExample();
+    // The useEffect hook will retrigger every time an element in the dependency array changes.
+    // changes = strict egality, so beware when mutating objects
   }, [fetchAgain]);
 
   const displayPokemons = () => {
