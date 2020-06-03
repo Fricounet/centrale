@@ -1,8 +1,28 @@
+# Available commands
+
+The following document aims to list projet available commands required to have the best development experience possible.
+All commands are either `backend` commands or `client` commands. Please make sure you navigate to the corresponding directory of your local project before running them.
+
+## Backend
+
+### `yarn`
+
+Install project dependancies. Only required to be run once at the begining of the project.
+
+### `yarn deploy`
+
+Deploy backend stack to AWS.
+Finally outputs backend URLs associated with the stack. Each of those URLs are resources that you client app can call.
+You can alternatively use Postman to test each of those URLs.
+
+## Client
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In the `client` project directory, you can run:
 
-## Available Scripts
+### `yarn`
 
-In the project directory, you can run:
+Install project dependancies. Only required to be run once at the begining of the project.
 
 ### `yarn start`
 
