@@ -44,3 +44,4 @@
 
 - [Liste des commandes disponibles](doc/available_commands.md)
 - [Attendus du cours](doc/expectations.md)
+- [Liens utiles / Pense-bête](doc/useful_links.md)
