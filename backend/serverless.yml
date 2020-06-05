@@ -5,7 +5,6 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: eu-west-1
-  profile: cs-deploy-serverless
 
 functions:
   hello:
