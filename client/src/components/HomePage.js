@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+import logo from "./Movie-Club-logo.png";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -8,16 +8,19 @@ const HomePage = () => {
       <header className="HomePage-header">
         <img src={logo} className="HomePage-logo" alt="logo" />
         <p>
-          Edit <code>src/HomePage.js</code> and save to reload.
+          Site de recommandation de films
         </p>
-        <a
-          className="HomePage-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          <a
+            className="HomePage-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Notez 
+          </a>
+          vos films préférés et accédez à votre recommandation personnalisée !
+        </p>
       </header>
     </div>
   );
