@@ -17,7 +17,7 @@ module.exports.handle = async event => {
     if (result.Item) {
         return {
             statusCode: 200,
-            body: JSON.stringify(result.Item),
+            body: JSON.stringify(result.Item.uuid),
         }
     } else {
         return {
