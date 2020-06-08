@@ -1,3 +1,86 @@
+/* NavBar */
+
+.logoContainer {
+  width: 3rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Navbar-logo {
+  height: 80%;
+  transition: transform 300ms ease;
+}
+
+.Navbar-logo:hover {
+  transform: rotate(0.5turn);
+}
+
 .Navbar {
-  text-align: center;
+  z-index: 6; /* > 4 to be on top of loading spinner */
+  font-size: 0.9rem;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3rem;
+  background-color: var(--t-deepblue);
+  box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)
+
+}
+
+.flexContainer > * {
+  margin-left: 0.75rem;
+}
+
+.NavbarLinks {
+  display: inline-flex;
+  flex-direction: row;
+  align-self: end;
+  height: 100%;
+  list-style-type: none;
+  align-items: stretch;
+  margin-right: 1.5rem;
+}
+
+@media (max-width:759.9px) {
+  .NavbarLinks {
+    display: none;
+  }
+}
+
+.NavbarLinks .active {
+  color:#ffffff;
+}
+
+.NavbarLinks a {
+  text-decoration: none;
+}
+
+.NavbarLinks a, .NavbarLinks button {
+  color: var(--t-white);
+  font-weight: bold;
+  transition: all 200ms linear 0s;
+  white-space: nowrap;
+}
+
+.NavbarLinks p {
+  color: var(--t-white);
+  white-space: nowrap;
+}
+
+.NavbarLinks .navLink {
+  padding: 0 0.9rem !important;
+}
+
+.NavbarLinks a.navLink {
+  display: flex;
+  align-items: center;
+}
+
+.NavbarLinks a:hover, .NavbarLinks button:hover {
+  color: var(--t-red);
 }

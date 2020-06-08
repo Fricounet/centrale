@@ -3,13 +3,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PokemonDisplayer from "./components/PokemonDisplayer";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
+import MoviePage from "./components/MoviePage"
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/allMovies">
+        <Route path="/movie/:movieId">
+            <MoviePage />
+        </Route>
+        <Route path="/movies">
             <PokemonDisplayer />
         </Route>
         <Route path="/">

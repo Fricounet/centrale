@@ -21,6 +21,12 @@ const HomePage = () => {
           </a>
           vos films préférés et accédez à votre recommandation personnalisée !
         </p>
+        <p>
+          Films préférés de nos utilisateurs
+        </p>
+        <p>
+          Derniers films ajoutés
+        </p>
       </header>
     </div>
   );
