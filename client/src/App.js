@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PokemonDisplayer from "./components/PokemonDisplayer";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
@@ -10,9 +10,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/movie/:movieId">
-            <MoviePage />
-        </Route>
+        <Route path="/movie/:movieId" component={MoviePage}></Route>
         <Route path="/movies">
             <PokemonDisplayer />
         </Route>
