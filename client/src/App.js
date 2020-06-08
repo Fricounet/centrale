@@ -11,9 +11,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/movie/:movieId" component={MoviePage}></Route>
-        <Route path="/movies">
-            <PokemonDisplayer />
-        </Route>
+        <Route path="/movies" component={PokemonDisplayer}></Route>
         <Route path="/">
             <HomePage />
         </Route>

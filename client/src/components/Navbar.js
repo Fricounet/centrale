@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
 import logo from "./Movie-Club-logo.png";
 import "./Navbar.css";
 
@@ -12,10 +11,10 @@ const Navbar = () => {
                 </div>
                 <ul>
                     <li className='NavbarLinks'>
-                        <Link to='/'>Accueil</Link>
+                        <a href='/'>Accueil</a>
                     </li>
                     <li className='NavbarLinks'>
-                        <Link to='/movies'>Tous les films</Link>
+                        <a href='/movies'>Tous les films</a>
                     </li>
                 </ul>
             </nav>
