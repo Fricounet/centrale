@@ -9,7 +9,17 @@ L'objectif est de développer le front d'une application de recommandations pers
 
 ### Attendu back
 
-WIP
+#### Palier 1
+- une route pour la récupération d'un film
+- une route pour créer des films
+- une route pour lister des films
+
+#### Palier 2
+- une route pour récupérer des films selon un critère
+- une route pour chercher dans la bdd de film selon le titre d'un film
+
+#### Palier 3
+- une route qui pour un film donné, retourne une liste de films correspondants recommandés
 
 ### Attendu front
 
