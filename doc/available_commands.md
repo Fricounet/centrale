@@ -9,11 +9,23 @@ All commands are either `backend` commands or `client` commands. Please make sur
 
 Install project dependancies. Only required to be run once at the begining of the project.
 
+### `yarn add`
+
+Add a new project dependancy.
+
 ### `yarn deploy`
 
 Deploy backend stack to AWS.
 Finally outputs backend URLs associated with the stack. Each of those URLs are resources that you client app can call.
 You can alternatively use Postman to test each of those URLs.
+
+### `sls invoke local -f <functionName>`
+
+Invoke function locally, very useful to test
+
+### `sls logs -f <functionName>`
+
+Recover latest execution logs from cloudwatch
 
 ## Client
 
@@ -23,6 +35,10 @@ In the `client` project directory, you can run:
 ### `yarn`
 
 Install project dependancies. Only required to be run once at the begining of the project.
+
+### `yarn add`
+
+Add a new project dependancy.
 
 ### `yarn start`
 
