@@ -54,6 +54,16 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
+  populate:
+    handler: functions/populate.handle
+    events:
+      - http:
+          method: post
+          path: populate
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
 custom:
   stageVars: ${file(./stage.${self:provider.stage}.yml)}
 
