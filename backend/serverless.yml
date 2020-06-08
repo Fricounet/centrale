@@ -5,6 +5,16 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource:
+        - 'Fn::GetAtt': [Table, Arn]
+  environment:
+    tableName: ${self:service.name}-dynamodb
 
 functions:
   hello:
@@ -14,5 +24,38 @@ functions:
           path: hello
           method: get
 
+  get:
+    handler: functions/get.handle
+    events:
+      - http:
+          method: get
+          path: items/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  create:
+    handler: functions/create.handle
+    events:
+      - http:
+          method: post
+          path: items
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  list:
+    handler: functions/list.handle
+    events:
+      - http:
+          method: get
+          path: items
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
 custom:
   stageVars: ${file(./stage.${self:provider.stage}.yml)}
+
+resources:
+  - ${file(resources/dynamodb.yml)}
