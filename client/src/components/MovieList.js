@@ -8,9 +8,8 @@ const MovieList = () => {
 	const triggerFetchAgain = () => setFetchAgain(!fetchAgain);
 
 	const fetchMovies = async () => {
-		console.log("in movieList.js")
 		try {
-			const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
+			const response = await fetch("https://pokeapi.co/api/v2/pokemon/"); // Modifier l'adresse et la suite de la fonction quand le back sera pret.
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
