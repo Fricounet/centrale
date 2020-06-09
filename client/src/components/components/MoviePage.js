@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./MoviePage.css";
+import "../styles/MoviePage.css";
 
 const MoviePage = (props) => {
   const [error, setError] = useState(null);

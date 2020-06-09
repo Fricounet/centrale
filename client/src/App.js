@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import PokemonDisplayer from "./components/PokemonDisplayer";
-import HomePage from "./components/HomePage";
-import Navbar from "./components/Navbar";
-import MoviePage from "./components/MoviePage"
-import ConnectionPage from "./components/ConnectionPage"
-import DisconnectionPage from "./components/DisconnectionPage"
+import PokemonDisplayer from "./components/components/PokemonDisplayer";
+import HomePage from "./components/components/HomePage";
+import Navbar from "./components/components/Navbar";
+import MoviePage from "./components/components/MoviePage"
+import ConnectionPage from "./components/components/ConnectionPage"
+import DisconnectionPage from "./components/components/DisconnectionPage"
 
 function App() {
   const [selectedUserId, setSelectedUserId] = useState(null);

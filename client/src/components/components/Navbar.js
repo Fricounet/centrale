@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Router} from "react-router-dom";
-import logo from "./Movie-Club-logo.png";
-import "./Navbar.css";
+import logo from "../Movie-Club-logo.png";
+import "../styles/Navbar.css";
 
 const Navbar = (props) => {
     const userId = props.userId;

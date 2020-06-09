@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "./Movie-Club-logo.png";
-import "./HomePage.css";
+import logo from "../Movie-Club-logo.png";
+import "../styles/HomePage.css";
 
 const HomePage = (props) => {
   const userId = props.userId;
