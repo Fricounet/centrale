@@ -6,6 +6,7 @@ import Navbar from "./components/components/Navbar";
 import MoviePage from "./components/components/MoviePage"
 import ConnectionPage from "./components/components/ConnectionPage"
 import DisconnectionPage from "./components/components/DisconnectionPage"
+import SaveMovie from "./components/components/SaveMovie"
 
 function App() {
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path="/disconnection">
           <DisconnectionPage userId={selectedUserId} setUserId ={setSelectedUserId} />
+        </Route>
+        <Route path="/save-movie">
+          <SaveMovie />
         </Route>
         <Route path="/movies/:movieId" component={MoviePage}></Route>
         <Route path="/movies">

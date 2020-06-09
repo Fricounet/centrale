@@ -4,9 +4,9 @@ import "../styles/MoviePage.css";
 
 const MoviePage = (props) => {
   const [error, setError] = useState(null);
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [movie, setMovie] = useState([]);
-	const [fetchAgain, setFetchAgain] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [movie, setMovie] = useState([]);
+  const [fetchAgain, setFetchAgain] = useState(false);
 
   const { movieId } = useParams();
 

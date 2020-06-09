@@ -36,6 +36,9 @@ const Navbar = (props) => {
                     <li className='NavbarLinks'>
                         <Link to='/movies'>Tous les films</Link>
                     </li>
+                    <li className='NavbarLinks'>
+                        <Link to='/save-movie'>Enregistrer un nouveau film</Link>
+                    </li>
                     {displayConnection()}
                 </ul>
             </nav>

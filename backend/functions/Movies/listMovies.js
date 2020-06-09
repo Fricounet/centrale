@@ -13,13 +13,18 @@ module.exports.handle = async event => {
             '#type': 'type'
         },
         ExpressionAttributeValues: {
-            ':type': 'items',
+            ':type': 'movies',
         },
     }).promise();
 
     return {
         statusCode: 200,
-        body: JSON.stringify(result.Items),
+        headers:{
+            'Access-Control-Allow-Origin':'*',
+        },
+        body: JSON.stringify({
+            Movies: result.Items,
+            Count: result.Count,
+        })
     }
 }
-
