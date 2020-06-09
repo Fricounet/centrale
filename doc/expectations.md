@@ -10,9 +10,15 @@ L'objectif est de développer le front d'une application de recommandations pers
 ### Attendu back
 
 #### Palier 1
-- une route pour la récupération d'un film
-- une route pour créer des films
-- une route pour lister des films
+- une route pour la récupération d'un film  --> done
+- une route pour créer des films            --> done (pas encore d'info récup depuis le front)
+- une route pour lister des films           --> done
+
+##### Fonctionnalités en plus
+- une route pour la récupération d'un user  --> done
+- une route pour créer des users            --> done (pas encore d'info récup depuis le front)
+- une route pour lister des users           --> done
+- remplissage automatique de la bdd avec films, users et notes  --> done
 
 #### Palier 2
 - une route pour récupérer des films selon un critère
@@ -45,6 +51,6 @@ L'objectif est de développer le front d'une application de recommandations pers
 - rajouter une authentification (mais pourquoi pas un switch entre users)
 
 
-### Attendu data 
+### Attendu data
 
 WIP
