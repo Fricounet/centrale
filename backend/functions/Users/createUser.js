@@ -9,7 +9,7 @@ module.exports.handle = async event => {
 
     // Get count of users
     const usersList = await listUsers.handle();
-    const count = usersList.body.Count;
+    const count = JSON.parse(usersList.body).Count;
 
     // Create user
     const dynamoDb = new DynamoDB.DocumentClient();
@@ -29,7 +29,7 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: user,
+        body: JSON.stringify(user),
     }
 }
 

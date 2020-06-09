@@ -16,7 +16,7 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: "success",
+        body: JSON.stringify("success"),
     }
 }
 

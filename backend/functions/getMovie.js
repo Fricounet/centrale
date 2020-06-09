@@ -10,7 +10,7 @@ module.exports.handle = async event => {
         TableName: process.env.tableName,
         Key: {
             type: 'movies',
-            uuid: '2', //event.pathParameters.id,
+            uuid: '2', //JSON.stringify(event.pathParameters.id),
         },
     }).promise();
 

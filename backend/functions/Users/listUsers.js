@@ -22,10 +22,10 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: {
-            'Users': result.Items,
-            'Count': result.Count,
-        }
+        body: JSON.stringify({
+            Users: result.Items,
+            Count: result.Count,
+        })
     }
 }
 

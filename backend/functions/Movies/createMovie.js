@@ -9,7 +9,7 @@ module.exports.handle = async event => {
 
     // Get count of movies
     const moviesList = await listMovies.handle();
-    const count = moviesList.body.Count;
+    const count = JSON.parse(moviesList.body).Count;
 
     // Create movie
     const dynamoDb = new DynamoDB.DocumentClient();
@@ -29,7 +29,7 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: movie,
+        body: JSON.stringify(movie),
     }
 }
 
