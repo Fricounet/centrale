@@ -24,32 +24,52 @@ functions:
           path: hello
           method: get
 
-  get:
-    handler: functions/get.handle
+  getMovie:
+    handler: functions/Movies/getMovie.handle
     events:
       - http:
           method: get
-          path: items/{id}
+          path: movies/{id}
           cors:
             origin: http://localhost:3000
             allowCredentials: true
 
-  create:
-    handler: functions/create.handle
+  getUser:
+    handler: functions/Users/getUser.handle
+    events:
+      - http:
+          method: get
+          path: users/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  createMovie:
+    handler: functions/Movies/createMovie.handle
     events:
       - http:
           method: post
-          path: items
+          path: movies
           cors:
             origin: http://localhost:3000
             allowCredentials: true
 
-  list:
-    handler: functions/list.handle
+  createUser:
+    handler: functions/Users/createUser.handle
+    events:
+      - http:
+          method: post
+          path: users
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  listMovie:
+    handler: functions/Movies/listMovies.handle
     events:
       - http:
           method: get
-          path: items
+          path: movies
           cors:
             origin: http://localhost:3000
             allowCredentials: true
@@ -60,6 +80,16 @@ functions:
       - http:
           method: post
           path: populate
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  listMovie:
+    handler: functions/Users/listUsers.handle
+    events:
+      - http:
+          method: get
+          path: users
           cors:
             origin: http://localhost:3000
             allowCredentials: true
