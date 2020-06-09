@@ -1,4 +1,5 @@
 const DynamoDB = require('aws-sdk/clients/dynamodb');
+const listMovies = require('./listMovies');
 
 module.exports.handle = async event => {
     //const data = JSON.parse(event.body);
@@ -7,20 +8,11 @@ module.exports.handle = async event => {
     }
 
     // Get count of movies
-    const dynamoDb = new DynamoDB.DocumentClient();
-    const params = {
-        TableName: process.env.tableName,
-        KeyConditionExpression: '#type = :type',
-        ExpressionAttributeNames: {
-            '#type': 'type'
-        },
-        ExpressionAttributeValues: {
-            ':type': 'movies',
-        },
-    }
-    const result = await dynamoDb.query(params).promise();
-    const count = result.Count
+    const moviesList = await listMovies.handle();
+    const count = moviesList.body.Count;
 
+    // Create movie
+    const dynamoDb = new DynamoDB.DocumentClient();
     const movie = {
         type: 'movies',
         uuid:  `${count + 1}`,

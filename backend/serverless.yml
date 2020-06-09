@@ -64,7 +64,7 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
-  listMovie:
+  listMovies:
     handler: functions/Movies/listMovies.handle
     events:
       - http:
