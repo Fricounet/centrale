@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import PokemonDisplayer from "./components/components/PokemonDisplayer";
+import MovieList from "./components/components/MovieList";
 import HomePage from "./components/components/HomePage";
 import Navbar from "./components/components/Navbar";
 import MoviePage from "./components/components/MoviePage"
@@ -26,7 +26,7 @@ function App() {
         </Route>
         <Route path="/movies/:movieId" component={MoviePage}></Route>
         <Route path="/movies">
-          <PokemonDisplayer />
+          <MovieList />
         </Route>
         <Route path="/">
           <HomePage userId={selectedUserId} />
