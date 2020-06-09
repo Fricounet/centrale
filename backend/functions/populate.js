@@ -1,5 +1,3 @@
-const createMovie = require('./Movies/createMovie');
-const createUser = require('./Users/createUser');
 const json = require('../data.json');
 const DynamoDB = require('aws-sdk/clients/dynamodb');
 
