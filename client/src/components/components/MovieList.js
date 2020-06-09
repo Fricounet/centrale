@@ -34,7 +34,7 @@ const MovieList = () => {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<div>
+				<div id = "movieList">
 					<table id="moviesTable">
 						<thead>
 							<tr>
