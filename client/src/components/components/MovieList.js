@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./MovieList.css"
+import "../styles/MovieList.css"
 
 const MovieList = () => {
 	const [error, setError] = useState(null);

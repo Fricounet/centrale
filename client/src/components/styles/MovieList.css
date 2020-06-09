@@ -1,0 +1,49 @@
+div {
+  background-color: rgba(97, 218, 251, 0.3);
+}
+
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border: 1px solid #282c34;
+}
+
+th {
+  border-bottom: 1px solid #282c34;
+  background-color: darkgray;
+  height: 30px;
+  vertical-align: middle;
+}
+
+td {
+  border-bottom: 1px solid grey;
+  background-color: white;
+  height: 30 px;
+  vertical-align: middle;
+}
+
+#headUuid {
+  text-align: center;
+}
+#bodyUuid {
+  width: 5%;
+  text-align: center;
+}
+
+#headType {
+  text-align: left;
+}
+
+#bodyType {
+  width: 15%;
+}
+
+#headTitle {
+  text-align: left;
+}
+
+#bodyTitle {
+  width: 70%;
+}
