@@ -15,8 +15,9 @@ module.exports.handle = async event => {
     const dynamoDb = new DynamoDB.DocumentClient();
     const user = {
         type: 'users',
-        uuid:  `${count + 1}`,
-        name: `test user ${count + 1}`,
+        uuid:  `test user_${count + 1}`,
+        lasttname: 'test user',
+        firstname: `${count + 1}`,
     }
 
     await dynamoDb.put({
