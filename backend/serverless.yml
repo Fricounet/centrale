@@ -74,22 +74,22 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
+  listUsers:
+    handler: functions/Users/listUsers.handle
+    events:
+      - http:
+          method: get
+          path: users
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
   populate:
     handler: functions/populate.handle
     events:
       - http:
           method: post
           path: populate
-          cors:
-            origin: http://localhost:3000
-            allowCredentials: true
-
-  listMovie:
-    handler: functions/Users/listUsers.handle
-    events:
-      - http:
-          method: get
-          path: users
           cors:
             origin: http://localhost:3000
             allowCredentials: true
