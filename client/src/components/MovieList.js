@@ -34,24 +34,26 @@ const MovieList = () => {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<table id="moviesTable">
-					<thead>
-						<tr>
-							<th id="headUuuid">ID</th>
-							<th id="headType">Type</th>
-							<th id="headTitle">Title</th>
-						</tr>
-					</thead>
-					<tbody>
-						{items.map((item) => (
-							<tr key={item.uuid}>
-								<td id="bodyUuid">{item.uuid}</td>
-								<td id="bodyType">{item.type}</td>
-								<td id="bodyTitle">{item.title}</td>
+				<div>
+					<table id="moviesTable">
+						<thead>
+							<tr>
+								<th id="headUuuid">ID</th>
+								<th id="headType">Type</th>
+								<th id="headTitle">Title</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{items.map((item) => (
+								<tr key={item.uuid}>
+									<td id="bodyUuid">{item.uuid}</td>
+									<td id="bodyType">{item.type}</td>
+									<td id="bodyTitle">{item.title}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			);
 		}
 	};
