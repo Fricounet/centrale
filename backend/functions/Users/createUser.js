@@ -16,7 +16,7 @@ module.exports.handle = async event => {
     const user = {
         type: 'users',
         uuid:  `${count + 1}`,
-        titre: `test user ${count + 1}`,
+        name: `test user ${count + 1}`,
     }
 
     await dynamoDb.put({
