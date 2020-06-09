@@ -15,16 +15,16 @@ module.exports.handle = async event => {
             '#type': 'type'
         },
         ExpressionAttributeValues: {
-            ':type': 'items',
+            ':type': 'movies',
         },
     }
     const result = await dynamoDb.query(params).promise();
     const count = result.Count
 
     const movie = {
-        type: 'items',
+        type: 'movies',
         uuid:  `${count + 1}`,
-        titre: `test ${count + 1}`,
+        titre: `test movie ${count + 1}`,
     }
 
     await dynamoDb.put({
