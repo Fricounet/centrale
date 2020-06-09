@@ -16,7 +16,7 @@ module.exports.handle = async event => {
     const movie = {
         type: 'movies',
         uuid:  `${count + 1}`,
-        titre: `test movie ${count + 1}`,
+        title: `test movie ${count + 1}`,
     }
 
     await dynamoDb.put({
