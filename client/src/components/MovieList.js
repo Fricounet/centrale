@@ -9,11 +9,11 @@ const MovieList = () => {
 
 	const fetchMovies = async () => {
 		try {
-			const response = await fetch("https://pokeapi.co/api/v2/pokemon/"); // Modifier l'adresse et la suite de la fonction quand le back sera pret.
+			const response = await fetch("https://aqb7gub7x6.execute-api.eu-west-1.amazonaws.com/dev/movies"); // Modifier l'adresse et la suite de la fonction quand le back sera pret.
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
-			setItems(responseJson.results);
+			setItems(Array.from(responseJson));
 		} catch (error) {
 			setIsLoaded(true);
 			setError(error);
@@ -32,11 +32,22 @@ const MovieList = () => {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<ul>
-					{items.map((item) => (
-						<li key={item.name}>{item.name}</li>
-					))}
-				</ul>
+        <table id="moviesTable">
+        <thead>
+          <tr>
+          <th>Title</th>
+          <th>Duration</th>
+          <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>title1</td>
+            <td>duration1</td>
+            <td>rating1</td>
+          </tr>
+        </tbody>
+				</table>
 			);
 		}
 	};
