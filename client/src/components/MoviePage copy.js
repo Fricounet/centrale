@@ -12,7 +12,7 @@ const MoviePage = (props) => {
 
   const fetchMovies = async () => {
 		try {
-      const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
+      const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId, method='get');
       const responseJson = await response.json();
       setIsLoaded(true);
       setError(false);
