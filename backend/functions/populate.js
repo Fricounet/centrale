@@ -7,7 +7,7 @@ module.exports.handle = async event => {
     if (!process.env.tableName) {
         throw new Error('env.tableName must be defined');
     }
-    console.log(createMovie.handle())
+
     for (i=0; i<10; i++) {
         await createMovie.handle();
     }

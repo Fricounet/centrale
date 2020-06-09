@@ -13,7 +13,7 @@ module.exports.handle = async event => {
             '#type': 'type'
         },
         ExpressionAttributeValues: {
-            ':type': 'utilisateurs',
+            ':type': 'users',
         },
     }).promise();
 
@@ -22,7 +22,10 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: result.Items,
+        body: {
+            'Users': result.Items,
+            'Count': result.Count,
+        }
     }
 }
 

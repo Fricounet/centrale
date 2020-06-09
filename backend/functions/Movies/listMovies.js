@@ -22,7 +22,9 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: result.Items,
+        body: {
+            'Movies': result.Items,
+            'Count': result.Count,
+        }
     }
 }
-

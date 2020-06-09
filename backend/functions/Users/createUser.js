@@ -1,4 +1,5 @@
 const DynamoDB = require('aws-sdk/clients/dynamodb');
+const listUsers = require('./listUsers');
 
 module.exports.handle = async event => {
     //const data = JSON.parse(event.body);
@@ -6,23 +7,14 @@ module.exports.handle = async event => {
         throw new Error('env.tableName must be defined');
     }
 
-    // Get count of movies
-    const dynamoDb = new DynamoDB.DocumentClient();
-    const params = {
-        TableName: process.env.tableName,
-        KeyConditionExpression: '#type = :type',
-        ExpressionAttributeNames: {
-            '#type': 'type'
-        },
-        ExpressionAttributeValues: {
-            ':type': 'utilisateurs',
-        },
-    }
-    const result = await dynamoDb.query(params).promise();
-    const count = result.Count
+    // Get count of users
+    const usersList = await listUsers.handle();
+    const count = usersList.body.Count;
 
+    // Create user
+    const dynamoDb = new DynamoDB.DocumentClient();
     const user = {
-        type: 'utilisateurs',
+        type: 'users',
         uuid:  `${count + 1}`,
         titre: `test user ${count + 1}`,
     }
