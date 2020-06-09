@@ -11,6 +11,7 @@ provider:
         - dynamodb:Query
         - dynamodb:GetItem
         - dynamodb:PutItem
+        - dynamodb:batchWriteItem
       Resource:
         - 'Fn::GetAtt': [Table, Arn]
   environment:
