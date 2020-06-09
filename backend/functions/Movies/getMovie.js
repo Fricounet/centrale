@@ -17,11 +17,17 @@ module.exports.handle = async event => {
     if (result.Item) {
         return {
             statusCode: 200,
+            headers:{
+                'Access-Control-Allow-Origin':'*',
+            },
             body: JSON.stringify(result.Item.uuid),
         }
     } else {
         return {
             statusCode: 404,
+            headers:{
+                'Access-Control-Allow-Origin':'*',
+            },
             body: 'Not found'
         }
     }
