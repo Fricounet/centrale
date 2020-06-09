@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 
 const DisconnectionPage = (props) => {
   const userId = props.userId;
-  const setUserId = props.setUserId;
   const history = useHistory();
+  const [userName, userFirstName] = userId.split("_");
+  const setUserId = props.setUserId;
 
   const handleSubmit = (event) => {
     setUserId(null);
@@ -17,7 +18,7 @@ const DisconnectionPage = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Vous êtes connectés en tant que {userId}.
+        Vous êtes connecté en tant que {userFirstName} {userName}.
       </label><br></br>
       <input type="submit" value="Se déconnecter" />
     </form>

@@ -3,11 +3,14 @@ import { useHistory } from "react-router-dom";
 
 const ConnectionPage = (props) => {
   const setUserId = props.setUserId;
-  const inputUserId = React.createRef();
   const history = useHistory();
 
-  const handleSubmit = (event) => {
-    setUserId(inputUserId.current.value);
+  const inputName = React.createRef();
+  const inputFisrtName = React.createRef();
+
+  const handleSubmitConnection = (event) => {
+    const userId = inputName.current.value + "_" + inputFisrtName.current.value;
+    setUserId(userId);
     event.preventDefault();
     return (
       history.push("/")
@@ -15,11 +18,11 @@ const ConnectionPage = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Rentrez votre identifiant utilisateur :
-        <input type="text" ref={inputUserId} />
-      </label><br></br>
+    <form onSubmit={handleSubmitConnection}>
+      <label>Nom :</label><br></br>
+      <input type="text" ref={inputName} /><br></br>
+      <label>Prénom :</label><br></br>
+      <input type="text" ref={inputFisrtName} /><br></br>
       <input type="submit" value="Se connecter" />
     </form>
   );

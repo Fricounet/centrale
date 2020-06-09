@@ -7,9 +7,10 @@ const HomePage = (props) => {
 
   const displayWelcome = () => {
     if (userId) {
+      const [userName, userFirstName] = userId.split("_");
       return (
         <p>
-          Bonjour {userId} !
+          Bonjour {userFirstName} {userName} !
         </p>
       );
     };
