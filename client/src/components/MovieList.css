@@ -1,7 +1,44 @@
-#moviesTable {
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   border-collapse: collapse;
+  border: 1px solid black;
 }
 
-#moviesTable {
-  border: 1px solide black;
+th {
+  border-bottom: 1px solid black;
+  height: 30px;
+  vertical-align: middle;
+  background-color: darkgray;
+}
+
+td {
+  border-bottom: 1px solid grey;
+  height: 30 px;
+  vertical-align: middle;
+}
+
+#headUuid {
+  text-align: center;
+}
+#bodyUuid {
+  width: 5%;
+  text-align: center;
+}
+
+#headType {
+  text-align: left;
+}
+
+#bodyType {
+  width: 15%;
+}
+
+#headTitle {
+  text-align: left;
+}
+
+#bodyTitle {
+  width: 70%;
 }
