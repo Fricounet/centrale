@@ -1,8 +1,28 @@
 import React from "react";
+import { Link, Router} from "react-router-dom";
 import logo from "./Movie-Club-logo.png";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
+    const userId = props.userId;
+
+    const displayConnection = () => {
+        if (userId) {
+            return (
+                <li className='NavbarLinks'>
+                    <Link to='/disconnection'>Se déconnecter</Link>
+                </li>
+            )
+        } else {
+            return (
+                <li className='NavbarLinks'>
+                    <Link to='/connection'>Se connecter</Link>
+                </li>
+            );
+        }
+    };
+
+
     return(
         <div className='Navbar'>
             <nav className='flexContainer'>
@@ -11,14 +31,12 @@ const Navbar = () => {
                 </div>
                 <ul>
                     <li className='NavbarLinks'>
-                        <a href='/'>Accueil</a>
+                        <Link to='/'>Accueil</Link>
                     </li>
                     <li className='NavbarLinks'>
-                        <a href='/movies'>Tous les films</a>
+                        <Link to='/movies'>Tous les films</Link>
                     </li>
-                    <li className='NavbarLinks'>
-                        <a href='/connection'>Se connecter</a>
-                    </li>
+                    {displayConnection()}
                 </ul>
             </nav>
         </div>

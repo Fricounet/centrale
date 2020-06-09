@@ -2,7 +2,19 @@ import React from "react";
 import logo from "./Movie-Club-logo.png";
 import "./HomePage.css";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const userId = props.userId;
+
+  const displayWelcome = () => {
+    if (userId) {
+      return (
+        <p>
+          Bonjour {userId} !
+        </p>
+      );
+    };
+  };
+
   return (
     <div className="HomePage">
       <header className="HomePage-header">
@@ -10,6 +22,7 @@ const HomePage = () => {
         <p>
           Site de recommandation de films
         </p>
+        {displayWelcome()}
         <p>
           <a
             className="HomePage-link"

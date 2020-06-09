@@ -1,13 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const ConnectionPage = (props) => {
+const DisconnectionPage = (props) => {
+  const userId = props.userId;
   const setUserId = props.setUserId;
-  const inputUserId = React.createRef();
   const history = useHistory();
 
   const handleSubmit = (event) => {
-    setUserId(inputUserId.current.value);
+    setUserId(null);
     event.preventDefault();
     return (
       history.push("/")
@@ -17,12 +17,11 @@ const ConnectionPage = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Rentrez votre identifiant utilisateur :
-        <input type="text" ref={inputUserId} />
+        Vous êtes connectés en tant que {userId}.
       </label><br></br>
-      <input type="submit" value="Se connecter" />
+      <input type="submit" value="Se déconnecter" />
     </form>
   );
 };
 
-export default ConnectionPage;
+export default DisconnectionPage;
