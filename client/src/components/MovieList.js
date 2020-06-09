@@ -9,11 +9,11 @@ const MovieList = () => {
 
 	const fetchMovies = async () => {
 		try {
-			const response = await fetch("https://aqb7gub7x6.execute-api.eu-west-1.amazonaws.com/dev/movies"); // Modifier l'adresse et la suite de la fonction quand le back sera pret.
+			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
-			setItems(Array.from(responseJson));
+			setItems(responseJson.Movies);
 		} catch (error) {
 			setIsLoaded(true);
 			setError(error);
@@ -25,6 +25,7 @@ const MovieList = () => {
 		fetchMovies();
 	}, [fetchAgain]);
 
+	//Need to change order of columns, and columns titles, but the skeleton is here
 	const displayMovies = () => {
 		if (error) {
 			return <div>Error: {error.message}</div>;
@@ -35,17 +36,19 @@ const MovieList = () => {
         <table id="moviesTable">
         <thead>
           <tr>
+          <th>ID</th>
+          <th>Type</th>
           <th>Title</th>
-          <th>Duration</th>
-          <th>Rating</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>title1</td>
-            <td>duration1</td>
-            <td>rating1</td>
-          </tr>
+				{items.map((item) => (
+					<tr key={item.uuid}>
+						<td>{item.uuid}</td>
+						<td>{item.type}</td>
+						<td>{item.title}</td>
+					</tr>     
+          ))}
         </tbody>
 				</table>
 			);
