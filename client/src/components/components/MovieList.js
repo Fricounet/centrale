@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { css } from "styled-components";
+import { Link } from 'react-router-dom';
 import "../styles/MovieList.css"
 
 const MovieList = () => {
@@ -46,7 +46,7 @@ const MovieList = () => {
 						<tbody>
 							{items.map((item) => (
 								<tr key={item.uuid}>
-									<td class="movieListCell" id="bodyTitle">{item.title}</td>
+									<td class="movieListCell" id="bodyTitle"><Link to={`/movies/${item.uuid}`}>{item.title}</Link></td>
 									<td class="movieListCell" id="bodyRating">
 										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating" style={{width:`${Math.floor(Math.random()*5)/5 * 100}%`}}></span></div>
 									</td>
