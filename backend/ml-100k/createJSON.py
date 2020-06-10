@@ -5,17 +5,26 @@ import names
 
 os.chdir(os.path.dirname(sys.argv[0]))
 
+total = 0
 movies = "u.item"
 users = "u.user"
 ratings = "u.data"
 db = "cs-group-12-Baptiste-dynamodb"
 data = {db: []}
 
-def check_unique(element):
-    for i in data[db]:
+def check_unique(element, data=data[db]):
+    for i in data:
         if i["PutRequest"]["Item"]["uuid"] == element:
             return False
     return True
+
+# function to return key for any value
+def get_key(dict, val):
+    for key, value in dict.items():
+         if val == value:
+             return key
+
+    return "key doesn't exist"
 
 # Create movies data
 if not os.path.isfile(movies):
@@ -24,6 +33,7 @@ else:
     with open(movies, encoding='iso-8859-1') as f:
         users_lines = f.read().splitlines()
     movies_id = {}
+    waiting_list = []
     for line in users_lines:
         data_line = {"type": "movies"}
         elements = line.split('|')
@@ -74,11 +84,11 @@ else:
         data_line["western"] = western
 
         data_movies = {"PutRequest": {"Item": data_line}}
-        if check_unique(uuid):
-            data[db].append(data_movies)
+        if check_unique(uuid, waiting_list):
+            waiting_list.append(data_movies)
             movies_id[elements[0]] = uuid
         else:
-            print("bite")
+            print("Doublon")
 
 # Create users data
 if not os.path.isfile(users):
@@ -87,6 +97,7 @@ else:
     with open(users, encoding='iso-8859-1') as f:
         users_lines = f.read().splitlines()
     users_id = {}
+    nb_users = 0
     for line in users_lines:
         data_line = {"type": "users"}
         elements = line.split('|')
@@ -105,12 +116,14 @@ else:
         if ' ' in first_name or ' ' in last_name:
             print("alerte !")
 
-        data_movies = {"PutRequest": {"Item": data_line}}
+        data_users = {"PutRequest": {"Item": data_line}}
         if check_unique(uuid):
-            data[db].append(data_movies)
+            data[db].append(data_users)
             users_id[elements[0]] = uuid
+            nb_users += 1
         else:
             print("Doublon")
+print(f"Nb d'users {nb_users}")
 
 # Create ratings data
 if not os.path.isfile(ratings):
@@ -118,6 +131,8 @@ if not os.path.isfile(ratings):
 else:
     with open(ratings, encoding='iso-8859-1') as f:
         users_lines = f.read().splitlines()
+    ratings = {}
+    nb_ratings = 0
     for line in users_lines:
         elements = line.split('\t')
         if (elements[0] in users_id.keys()) and (elements[1] in movies_id.keys()):
@@ -129,8 +144,25 @@ else:
             rating = elements[2]
             data_line["rating"] = rating
 
-            data_movies = {"PutRequest": {"Item": data_line}}
-            data[db].append(data_movies)
+            if movie_id in ratings.keys():
+                ratings[movie_id].append(rating)
+            else:
+                ratings[movie_id] = [rating]
+            data_ratings = {"PutRequest": {"Item": data_line}}
+            data[db].append(data_ratings)
+            nb_ratings += 1
+print(f"Nb de ratings {nb_ratings}")
+
+# Compute average rating movies
+nb_movies = 0
+for movie in waiting_list:
+    key = movie["PutRequest"]["Item"]["uuid"]
+    avg = round(sum([int(rate) for rate in ratings[key]])/len(ratings[key]), 1)
+    movie["PutRequest"]["Item"]["AvgRating"] = str(avg)
+    data[db].append(movie)
+    nb_movies += 1
+print(f"Nb de films {nb_movies}")
+print(len(data[db]) == nb_movies + nb_users + nb_ratings)
 
 # Write data to json format
 with open('../data.json', 'w') as outfile:

@@ -35,16 +35,6 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
-  getUser:
-    handler: functions/Users/getUser.handle
-    events:
-      - http:
-          method: get
-          path: users/{id}
-          cors:
-            origin: http://localhost:3000
-            allowCredentials: true
-
   createMovie:
     handler: functions/Movies/createMovie.handle
     events:
@@ -55,12 +45,12 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
-  createUser:
-    handler: functions/Users/createUser.handle
+  getMoviesByCriteria:
+    handler: functions/Movies/getMoviesByCriteria.handle
     events:
       - http:
-          method: post
-          path: users
+          method: get
+          path: search
           cors:
             origin: http://localhost:3000
             allowCredentials: true
@@ -71,6 +61,26 @@ functions:
       - http:
           method: get
           path: movies
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getUser:
+    handler: functions/Users/getUser.handle
+    events:
+      - http:
+          method: get
+          path: users/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  createUser:
+    handler: functions/Users/createUser.handle
+    events:
+      - http:
+          method: post
+          path: users
           cors:
             origin: http://localhost:3000
             allowCredentials: true
