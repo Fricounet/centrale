@@ -55,16 +55,6 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
-  getMoviesByName:
-    handler: functions/Movies/getMoviesByName.handle
-    events:
-      - http:
-          method: get
-          path: searchName
-          cors:
-            origin: http://localhost:3000
-            allowCredentials: true
-
   listMovies:
     handler: functions/Movies/listMovies.handle
     events:
