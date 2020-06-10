@@ -1,6 +1,6 @@
 {
     "resource": "/",
-    "path": "/searchName",
+    "path": "/search",
     "httpMethod": "GET",
     "multiValueQueryStringParameters": {"query": ["snow"],
                                         "type": ["children"]

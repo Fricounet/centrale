@@ -35,8 +35,8 @@ module.exports.handle = async event => {
             }
         }
         await dynamoDb.batchWrite(params, (err, data) => {
-            if (err) console.log(err, err.stack);
-            else     console.log(data)}).promise();
+            if (err) console.log(err, data);
+            else     console.log(data)});
     })
 
     return {

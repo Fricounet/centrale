@@ -105,6 +105,36 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
+  getRating:
+    handler: functions/Ratings/getRating.handle
+    events:
+      - http:
+          method: get
+          path: ratings/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  createRating:
+    handler: functions/Ratings/createRating.handle
+    events:
+      - http:
+          method: post
+          path: ratings
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getRatings:
+    handler: functions/Ratings/getRatings.handle
+    events:
+      - http:
+          method: get
+          path: ratings
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
 custom:
   stageVars: ${file(./stage.${self:provider.stage}.yml)}
 

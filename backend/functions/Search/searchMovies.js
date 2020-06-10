@@ -16,7 +16,7 @@ module.exports.handle = async event => {
         }
     } else if (listMoviesByCriteria.length === 0) {
         return {
-            statusCode: 201,
+            statusCode: 200,
             headers:{
                 'Access-Control-Allow-Origin':'*',
             },
@@ -29,10 +29,10 @@ module.exports.handle = async event => {
         })).includes(true)
     });
     return {
-        statusCode: 202,
+        statusCode: 200,
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: JSON.stringify(listMovies)
+        body: JSON.stringify({ Movies: listMovies })
     }}
 }

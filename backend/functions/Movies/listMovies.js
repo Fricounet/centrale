@@ -13,7 +13,7 @@ module.exports.handle = async event => {
             '#type': 'type'
         },
         ExpressionAttributeValues: {
-            ':type': 'movies',
+            ':type': 'movie',
         },
     }).promise();
 
@@ -22,9 +22,6 @@ module.exports.handle = async event => {
         headers:{
             'Access-Control-Allow-Origin':'*',
         },
-        body: JSON.stringify({
-            Movies: result.Items,
-            Count: result.Count,
-        })
+        body: JSON.stringify({ Movies: result.Items })
     }
 }

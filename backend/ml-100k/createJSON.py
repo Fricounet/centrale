@@ -31,11 +31,11 @@ if not os.path.isfile(movies):
     print(f'{movies} does not exist.')
 else:
     with open(movies, encoding='iso-8859-1') as f:
-        users_lines = f.read().splitlines()
+        movies_lines = f.read().splitlines()
     movies_id = {}
     waiting_list = []
-    for line in users_lines:
-        data_line = {"type": "movies"}
+    for line in movies_lines:
+        data_line = {"type": "movie"}
         elements = line.split('|')
         title = elements[1].split('(')[0]
         data_line["title"] = title
@@ -99,7 +99,7 @@ else:
     users_id = {}
     nb_users = 0
     for line in users_lines:
-        data_line = {"type": "users"}
+        data_line = {"type": "user"}
         elements = line.split('|')
         age = elements[1]
         data_line["age"] = age
@@ -130,13 +130,13 @@ if not os.path.isfile(ratings):
     print(f'{ratings} does not exist.')
 else:
     with open(ratings, encoding='iso-8859-1') as f:
-        users_lines = f.read().splitlines()
+       ratings_lines = f.read().splitlines()
     ratings = {}
     nb_ratings = 0
-    for line in users_lines:
+    for line in ratings_lines:
         elements = line.split('\t')
         if (elements[0] in users_id.keys()) and (elements[1] in movies_id.keys()):
-            data_line = {"type": "ratings"}
+            data_line = {"type": "rating"}
             user_id = users_id[elements[0]]
             movie_id = movies_id[elements[1]]
             uuid = movie_id + "^" + user_id
