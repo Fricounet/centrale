@@ -9,13 +9,13 @@ const Navbar = (props) => {
     const displayConnection = () => {
         if (userId) {
             return (
-                <li class='NavbarLinks'>
+                <li className='NavbarLinks'>
                     <Link to='/disconnection'>Se déconnecter</Link>
                 </li>
             )
         } else {
             return (
-                <li class='NavbarLinks'>
+                <li className='NavbarLinks'>
                     <Link to='/connection'>Se connecter</Link>
                 </li>
             );
@@ -26,7 +26,7 @@ const Navbar = (props) => {
     return(
         <div className='Navbar'>
             <nav className='flexContainer'>
-                <div class="logoContainer">
+                <div className="logoContainer">
                     <img src={logo} className="Navbar-logo" alt="logo" />
                 </div>
                 <ul>
