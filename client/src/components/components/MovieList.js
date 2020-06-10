@@ -8,7 +8,8 @@ const MovieList = () => {
 
 	const fetchMovies = async () => {
 		try {
-			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
+//			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			const response = await fetch("https://q9zob5z4md.execute-api.eu-west-1.amazonaws.com/dev/movies");
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
@@ -38,16 +39,18 @@ const MovieList = () => {
 						<thead>
 							<tr>
 								<th class="movieListHeader" id="headUuuid">ID</th>
-								<th class="movieListHeader" id="headType">Type</th>
 								<th class="movieListHeader" id="headTitle">Title</th>
+								<th class="movieListHeader" id="headRating">Rating</th>
 							</tr>
 						</thead>
 						<tbody>
 							{items.map((item) => (
 								<tr key={item.uuid}>
 									<td class="movieListCell" id="bodyUuid">{item.uuid}</td>
-									<td class="movieListCell" id="bodyType">{item.type}</td>
 									<td class="movieListCell" id="bodyTitle">{item.title}</td>
+									<td class="movieListCell" id="bodyRating">
+										<div class="star-ratings-sprite"><span style="width:52%" class="star-ratings-sprite-rating"></span></div>
+									</td>
 								</tr>
 							))}
 						</tbody>
