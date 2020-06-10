@@ -8,8 +8,8 @@ const MovieList = () => {
 
 	const fetchMovies = async () => {
 		try {
-//			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
-			const response = await fetch("https://q9zob5z4md.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			//			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			const response = await fetch(" https://qwb4mgojyk.execute-api.eu-west-1.amazonaws.com/dev/movies");
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
@@ -33,7 +33,7 @@ const MovieList = () => {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<div id = "movieList">
+				<div id="movieList">
 					<h2 class="pageTitle">Liste des films</h2>
 					<table id="moviesTable">
 						<thead>
@@ -49,7 +49,7 @@ const MovieList = () => {
 									<td class="movieListCell" id="bodyUuid">{item.uuid}</td>
 									<td class="movieListCell" id="bodyTitle">{item.title}</td>
 									<td class="movieListCell" id="bodyRating">
-										<div class="star-ratings-sprite"><span style="width:52%" class="star-ratings-sprite-rating"></span></div>
+										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating"></span></div>
 									</td>
 								</tr>
 							))}
@@ -58,7 +58,7 @@ const MovieList = () => {
 				</div>
 			);
 		}
-	};
+	}
 
 	return (
 		<div>
