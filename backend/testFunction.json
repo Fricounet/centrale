@@ -1,9 +1,9 @@
 {
     "resource": "/",
-    "path": "/search",
+    "path": "/searchName",
     "httpMethod": "GET",
-    "multiValueQueryStringParameters": {"type":
-                                            ["children", "mystery"]
+    "multiValueQueryStringParameters": {"query":
+                                            [""]
                                         }
 
   }
