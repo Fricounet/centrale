@@ -45,8 +45,8 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
-  getMoviesByCriteria:
-    handler: functions/Movies/getMoviesByCriteria.handle
+  searchMovies:
+    handler: functions/Search/searchMovies.handle
     events:
       - http:
           method: get
