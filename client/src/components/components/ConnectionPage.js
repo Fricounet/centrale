@@ -40,7 +40,7 @@ const Registration = (props) => {
   const inputFisrtName = React.createRef();
 
   const createUser = async () => {
-    const opts = {lastname: inputName.current.value, firstname: inputFisrtName.current.value};
+    const opts = {'lastname': inputName.current.value, 'firstname': inputFisrtName.current.value};
     const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/users/", {
       method: 'post',
       body: JSON.stringify(opts)
