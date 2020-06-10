@@ -1,9 +1,0 @@
-{
-    "resource": "/",
-    "path": "/searchName",
-    "httpMethod": "GET",
-    "multiValueQueryStringParameters": {"query":
-                                            [""]
-                                        }
-
-  }
