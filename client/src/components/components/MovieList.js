@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { css } from "styled-components";
 import "../styles/MovieList.css"
 
 const MovieList = () => {
@@ -8,8 +9,8 @@ const MovieList = () => {
 
 	const fetchMovies = async () => {
 		try {
-			//			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
-			const response = await fetch(" https://qwb4mgojyk.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			// const response = await fetch("https://q9zob5z4md.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			const response = await fetch(" https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies");
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
@@ -47,7 +48,7 @@ const MovieList = () => {
 								<tr key={item.uuid}>
 									<td class="movieListCell" id="bodyTitle">{item.title}</td>
 									<td class="movieListCell" id="bodyRating">
-										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating"></span></div>
+										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating" style={{width:`${Math.floor(Math.random()*5)/5 * 100}%`}}></span></div>
 									</td>
 								</tr>
 							))}
