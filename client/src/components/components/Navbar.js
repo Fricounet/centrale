@@ -9,13 +9,13 @@ const Navbar = (props) => {
     const displayConnection = () => {
         if (userId) {
             return (
-                <li className='NavbarLinks'>
+                <li class='NavbarLinks'>
                     <Link to='/disconnection'>Se déconnecter</Link>
                 </li>
             )
         } else {
             return (
-                <li className='NavbarLinks'>
+                <li class='NavbarLinks'>
                     <Link to='/connection'>Se connecter</Link>
                 </li>
             );

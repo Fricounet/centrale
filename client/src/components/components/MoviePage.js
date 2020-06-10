@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Combobox } from "react-widgets";
+import { makeStyles } from '@material-ui/core/styles';
+import SaveRating from "./SaveRating";
 import "../styles/MoviePage.css";
 
 const MoviePage = (props) => {
@@ -8,9 +9,9 @@ const MoviePage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
   const [fetchAgain, setFetchAgain] = useState(false);
-  const ratingsPossible = [1, 2, 3, 4, 5];
 
   const { movieId } = useParams();
+  const userId = props.userId;
 
   const fetchMovies = async () => {
 		try {
@@ -39,10 +40,8 @@ const MoviePage = (props) => {
 			return (
         <>
           <h2>Titre du film : {movie.title}</h2>
-          <p>Film numéro {movie.uuid}</p>
-          <Combobox 
-            data={ratingsPossible}
-          />
+          <label></label>
+          <SaveRating movieId={movieId} userId={userId} />
         </>
 			)
 		}
