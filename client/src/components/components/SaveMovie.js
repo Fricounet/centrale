@@ -13,7 +13,7 @@ const SaveMovie = () => {
   const inputReleaseDate = React.createRef();
 
   const createOpts = () => {
-    const opts = {'title': inputTitle.current.value, 'realese date': inputReleaseDate.current.value};
+    const opts = {'title': inputTitle.current.value, 'release date': inputReleaseDate.current.value};
     for (var i = 0; i < movieTypes.length; i++) {
       const type = movieTypes[i];
       if (selectedTypes.value.includes(type)) {
@@ -22,14 +22,16 @@ const SaveMovie = () => {
         opts[type] = 0;
       };
     };
+    console.log(opts);
     return opts;
   };
 
   const handleSubmit = async (event) => {
     try {
       const opts = createOpts();
-      console.log(opts);
-      /*const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
+      console.log(JSON.stringify(opts));
+      /*
+      const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
         method: 'post',
         body: JSON.stringify(opts)
       });*/
