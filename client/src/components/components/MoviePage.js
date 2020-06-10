@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Combobox } from "react-widgets";
 import "../styles/MoviePage.css";
 
 const MoviePage = (props) => {
@@ -7,12 +8,13 @@ const MoviePage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
   const [fetchAgain, setFetchAgain] = useState(false);
+  const ratingsPossible = [1, 2, 3, 4, 5];
 
   const { movieId } = useParams();
 
   const fetchMovies = async () => {
 		try {
-      const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
+      const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
       const responseJson = await response.json();
       setIsLoaded(true);
       setError(false);
@@ -38,7 +40,9 @@ const MoviePage = (props) => {
         <>
           <h2>Titre du film : {movie.title}</h2>
           <p>Film numéro {movie.uuid}</p>
-          <p>Note du film : </p>
+          <Combobox 
+            data={ratingsPossible}
+          />
         </>
 			)
 		}
