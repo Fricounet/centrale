@@ -11,18 +11,23 @@ L'objectif est de développer le front d'une application de recommandations pers
 
 #### Palier 1
 - une route pour la récupération d'un film  --> done
-- une route pour créer des films            --> done (pas encore d'info récup depuis le front)
+- une route pour créer des films            --> done
 - une route pour lister des films           --> done
 
 ##### Fonctionnalités en plus
 - une route pour la récupération d'un user  --> done
-- une route pour créer des users            --> done (pas encore d'info récup depuis le front)
+- une route pour créer des users            --> done
 - une route pour lister des users           --> done
 - remplissage automatique de la bdd avec films, users et notes  --> done
 
 #### Palier 2
-- une route pour récupérer des films selon un critère
-- une route pour chercher dans la bdd de film selon le titre d'un film
+- une route pour récupérer des films selon un critère                   --> done
+- une route pour chercher dans la bdd de film selon le titre d'un film  --> done
+
+##### Fonctionnalités en plus
+- une route pour la récupération des ratings d'un film ou d'un user  --> done
+- une route pour la création d'un rating                             --> done
+- une route pour la récupération d'un rating                         --> done
 
 #### Palier 3
 - une route qui pour un film donné, retourne une liste de films correspondants recommandés
