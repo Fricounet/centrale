@@ -1,22 +1,48 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
-import { Multiselect } from 'react-widgets';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 
 const SaveMovie = () => {
-  const [error, setError] = useState(null);
-  const [isSaved, setIsSaved] = useState(false);
-  const history = useHistory();
-  const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
-  const [selectedTypes, setSelectedTypes] = useState([]);
-
   const inputTitle = React.createRef();
   const inputReleaseDate = React.createRef();
+  const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
+  const [checkboxes, setCheckboxes] = useState({
+    'unknown': false,
+    'action': false,
+    'adventure': false,
+    'animation': false,
+    'children': false,
+    'comedy': false,
+    'crime': false,
+    'documentary': false,
+    'drama': false,
+    'fantasy': false,
+    'black-movie': false, 
+    'horror': false,
+    'musical': false,
+    'mystery': false, 
+    'romance': false,
+    'sci-fi': false, 
+    'thriller': false, 
+    'war': false,
+    'western': false
+  });
+
+  const handleChange = (event) => {
+    const dico = checkboxes;
+    const type = event.target.name;
+    dico[type] =  !dico[type];
+    setCheckboxes(dico);
+  };
 
   const createOpts = () => {
     const opts = {'title': inputTitle.current.value, 'release date': inputReleaseDate.current.value};
     for (var i = 0; i < movieTypes.length; i++) {
       const type = movieTypes[i];
-      if (selectedTypes.value.includes(type)) {
+      if (checkboxes[type]) {
         opts[type] = 1;
       } else {
         opts[type] = 0;
@@ -26,41 +52,30 @@ const SaveMovie = () => {
     return opts;
   };
 
-  const handleSubmit = async (event) => {
-    try {
-      const opts = createOpts();
-      console.log(JSON.stringify(opts));
-      /*
-      const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
-        method: 'post',
-        body: JSON.stringify(opts)
-      });*/
-      setIsSaved(true);
-      setError(false);
-      event.preventDefault();
-      return history.push('/');
-    } catch (error) {
-        setIsSaved(true);
-        setError(error);
-        return history.push('/');
-    }
+  const handleClick = async () => {
+    const opts = createOpts();
+    const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
+      method: 'post',
+      body: JSON.stringify(opts)
+    });
   };
 
   return (
     <div>
       <h2>Enregistrer un nouveau film</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label>Titre :</label><br />
         <input type="text" ref={inputTitle} /><br />
         <label>Date de sortie (au format 01-Jan-1995) :</label><br />
         <input type="text" ref={inputReleaseDate} /><br />
         <label>Type de film :</label><br />
-        <Multiselect 
-          data={movieTypes} 
-          onChange={value => setSelectedTypes({value})}
-        />
-        <br />
-        <input type="submit" value="Enregistrer" />
+        {movieTypes.map((type) => (
+          <FormControlLabel
+            control={<Checkbox onChange={handleChange} name={type} />}
+            label={type}
+          />
+        ))}
+        <Button startIcon={<SaveIcon />} onClick={() => {handleClick()}}>Enregistrer</Button>
       </form>
     </div>
   );
