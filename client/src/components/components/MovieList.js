@@ -46,9 +46,9 @@ const MovieList = () => {
 						<tbody>
 							{items.map((item) => (
 								<tr key={item.uuid}>
-									<td class="movieListCell" id="bodyTitle"><Link to={`/movies/${item.uuid}`}>{item.title}</Link></td>
+									<td class="movieListCell" id="bodyTitle"><Link class="movieLink" to={`/movies/${item.uuid}`}>{item.title}</Link></td>
 									<td class="movieListCell" id="bodyRating">
-										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating" style={{width:`${Math.floor(Math.random()*5)/5 * 100}%`}}></span></div>
+										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating" style={{width:`${item.AvgRating/5 * 100}%`}}></span></div>
 									</td>
 								</tr>
 							))}
