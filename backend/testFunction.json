@@ -2,8 +2,8 @@
     "resource": "/",
     "path": "/search",
     "httpMethod": "GET",
-    "multiValueQueryStringParameters": {"type":
-                                            ["children", "mystery"]
+    "multiValueQueryStringParameters": {"query":
+                                            ["de_la_merde"]
                                         }
 
   }

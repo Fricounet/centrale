@@ -1,22 +1,17 @@
 const DynamoDB = require('aws-sdk/clients/dynamodb');
-const listMovies = require('./listMovies');
 
 module.exports.handle = async event => {
-    //const data = JSON.parse(event.body);
+    const data = JSON.parse(event.body);
     if (!process.env.tableName) {
         throw new Error('env.tableName must be defined');
     }
 
-    // Get count of movies
-    const moviesList = await listMovies.handle();
-    const count = JSON.parse(moviesList.body).Count;
-
     // Create movie
     const dynamoDb = new DynamoDB.DocumentClient();
     const movie = {
-        type: 'movies',
-        uuid:  `test_movie_${count + 1}`,
-        title: `test movie ${count + 1}`,
+        ...data,
+        uuid: data.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""),
+        type: "movies"
     }
 
     await dynamoDb.put({
