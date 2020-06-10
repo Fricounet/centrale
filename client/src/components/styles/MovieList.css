@@ -22,7 +22,7 @@ table {
 .movieListCell {
   border-bottom: 1px solid grey;
   background-color: white;
-  height: 30 px;
+  height: 30px;
   vertical-align: middle;
 }
 
@@ -40,6 +40,21 @@ table {
 
 #bodyRating {
   width: 17%;
+}
+
+.movieLink:link {
+  color: black;
+  text-decoration: none;
+}
+
+.movieLink:visited {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+
+.movieLink:hover {
+  color: #61dafb;
+  text-decoration: underline;
 }
 
 .star-ratings-sprite {
