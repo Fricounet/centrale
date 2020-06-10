@@ -11,7 +11,7 @@ module.exports.handle = async event => {
     const movie = {
         ...data,
         uuid: data.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""),
-        type: "movies"
+        type: "movie"
     }
 
     await dynamoDb.put({

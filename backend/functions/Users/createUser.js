@@ -1,30 +1,23 @@
 const DynamoDB = require('aws-sdk/clients/dynamodb');
-const listUsers = require('./listUsers');
 
 module.exports.handle = async event => {
-    //const data = JSON.parse(event.body);
+    const data = JSON.parse(event.body);
     if (!process.env.tableName) {
         throw new Error('env.tableName must be defined');
     }
 
-    // Get count of users
-    const usersList = await listUsers.handle();
-    const count = JSON.parse(usersList.body).Count;
-
-    // Create user
     const dynamoDb = new DynamoDB.DocumentClient();
     const user = {
-        type: 'users',
-        uuid:  `test user_${count + 1}`,
-        lasttname: 'test user',
-        firstname: `${count + 1}`,
+        ...data,
+        uuid: data.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""),
+        type: "user"
     }
 
     await dynamoDb.put({
         TableName: process.env.tableName,
         Item: user,
     }).promise();
-
+    
     return {
         statusCode: 200,
         headers:{

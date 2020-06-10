@@ -9,7 +9,7 @@ module.exports.handle = async event => {
     const result = await dynamoDb.get({
         TableName: process.env.tableName,
         Key: {
-            type: 'movies',
+            type: 'movie',
             uuid: event.pathParameters.id,
         },
     }).promise();

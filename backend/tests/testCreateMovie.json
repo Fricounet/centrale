@@ -1,6 +1,6 @@
 {
     "resource": "/",
-    "path": "/search",
+    "path": "/movies",
     "httpMethod": "POST",
     "body": {
         "title": "Best movie",
