@@ -5,8 +5,6 @@ const MovieList = () => {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
-	const [fetchAgain, setFetchAgain] = useState(false);
-	const triggerFetchAgain = () => setFetchAgain(!fetchAgain);
 
 	const fetchMovies = async () => {
 		try {
@@ -24,7 +22,7 @@ const MovieList = () => {
 	useEffect(() => {
 		setIsLoaded(false);
 		fetchMovies();
-	}, [fetchAgain]);
+	}, []);
 
 	//Need to change order of columns, and columns titles, but the skeleton is here
 	const displayMovies = () => {
@@ -35,20 +33,21 @@ const MovieList = () => {
 		} else {
 			return (
 				<div id = "movieList">
+					<h2 class="pageTitle">Liste des films</h2>
 					<table id="moviesTable">
 						<thead>
 							<tr>
-								<th id="headUuuid">ID</th>
-								<th id="headType">Type</th>
-								<th id="headTitle">Title</th>
+								<th class="movieListHeader" id="headUuuid">ID</th>
+								<th class="movieListHeader" id="headType">Type</th>
+								<th class="movieListHeader" id="headTitle">Title</th>
 							</tr>
 						</thead>
 						<tbody>
 							{items.map((item) => (
 								<tr key={item.uuid}>
-									<td id="bodyUuid">{item.uuid}</td>
-									<td id="bodyType">{item.type}</td>
-									<td id="bodyTitle">{item.title}</td>
+									<td class="movieListCell" id="bodyUuid">{item.uuid}</td>
+									<td class="movieListCell" id="bodyType">{item.type}</td>
+									<td class="movieListCell" id="bodyTitle">{item.title}</td>
 								</tr>
 							))}
 						</tbody>
@@ -60,7 +59,6 @@ const MovieList = () => {
 
 	return (
 		<div>
-			<button onClick={triggerFetchAgain}>Fetch again</button>
 			{displayMovies()}
 		</div>
 	);
