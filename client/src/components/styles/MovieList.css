@@ -26,14 +26,6 @@ table {
   vertical-align: middle;
 }
 
-#headUuid {
-  text-align: center;
-}
-#bodyUuid {
-  width: 3%;
-  text-align: center;
-}
-
 #headTitle {
   text-align: left;
 }

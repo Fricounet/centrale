@@ -38,7 +38,6 @@ const MovieList = () => {
 					<table id="moviesTable">
 						<thead>
 							<tr>
-								<th class="movieListHeader" id="headUuuid">ID</th>
 								<th class="movieListHeader" id="headTitle">Title</th>
 								<th class="movieListHeader" id="headRating">Rating</th>
 							</tr>
@@ -46,7 +45,6 @@ const MovieList = () => {
 						<tbody>
 							{items.map((item) => (
 								<tr key={item.uuid}>
-									<td class="movieListCell" id="bodyUuid">{item.uuid}</td>
 									<td class="movieListCell" id="bodyTitle">{item.title}</td>
 									<td class="movieListCell" id="bodyRating">
 										<div class="star-ratings-sprite"><span class="star-ratings-sprite-rating"></span></div>
