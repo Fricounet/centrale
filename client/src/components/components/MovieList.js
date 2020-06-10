@@ -5,12 +5,11 @@ const MovieList = () => {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
-	const [fetchAgain, setFetchAgain] = useState(false);
-	const triggerFetchAgain = () => setFetchAgain(!fetchAgain);
 
 	const fetchMovies = async () => {
 		try {
-			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
+//			const response = await fetch("https://mnbkxsksql.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			const response = await fetch("https://q9zob5z4md.execute-api.eu-west-1.amazonaws.com/dev/movies");
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
@@ -24,7 +23,7 @@ const MovieList = () => {
 	useEffect(() => {
 		setIsLoaded(false);
 		fetchMovies();
-	}, [fetchAgain]);
+	}, []);
 
 	//Need to change order of columns, and columns titles, but the skeleton is here
 	const displayMovies = () => {
@@ -35,20 +34,23 @@ const MovieList = () => {
 		} else {
 			return (
 				<div id = "movieList">
+					<h2 class="pageTitle">Liste des films</h2>
 					<table id="moviesTable">
 						<thead>
 							<tr>
-								<th id="headUuuid">ID</th>
-								<th id="headType">Type</th>
-								<th id="headTitle">Title</th>
+								<th class="movieListHeader" id="headUuuid">ID</th>
+								<th class="movieListHeader" id="headTitle">Title</th>
+								<th class="movieListHeader" id="headRating">Rating</th>
 							</tr>
 						</thead>
 						<tbody>
 							{items.map((item) => (
 								<tr key={item.uuid}>
-									<td id="bodyUuid">{item.uuid}</td>
-									<td id="bodyType">{item.type}</td>
-									<td id="bodyTitle">{item.title}</td>
+									<td class="movieListCell" id="bodyUuid">{item.uuid}</td>
+									<td class="movieListCell" id="bodyTitle">{item.title}</td>
+									<td class="movieListCell" id="bodyRating">
+										<div class="star-ratings-sprite"><span style="width:52%" class="star-ratings-sprite-rating"></span></div>
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -60,7 +62,6 @@ const MovieList = () => {
 
 	return (
 		<div>
-			<button onClick={triggerFetchAgain}>Fetch again</button>
 			{displayMovies()}
 		</div>
 	);

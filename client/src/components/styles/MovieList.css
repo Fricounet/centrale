@@ -1,5 +1,7 @@
-#movieList {
-  background-color: rgba(97, 218, 251, 0.3);
+.pageTitle {
+  color: #61dafb;
+  position: relative;
+  left: 15px;
 }
 
 table {
@@ -10,14 +12,14 @@ table {
   border: 1px solid #282c34;
 }
 
-th {
+.movieListHeader {
   border-bottom: 1px solid #282c34;
-  background-color: darkgray;
+  background-color: rgba(97, 218, 251, 0.3);
   height: 30px;
   vertical-align: middle;
 }
 
-td {
+.movieListCell {
   border-bottom: 1px solid grey;
   background-color: white;
   height: 30 px;
@@ -28,16 +30,8 @@ td {
   text-align: center;
 }
 #bodyUuid {
-  width: 5%;
+  width: 3%;
   text-align: center;
-}
-
-#headType {
-  text-align: left;
-}
-
-#bodyType {
-  width: 15%;
 }
 
 #headTitle {
@@ -46,4 +40,31 @@ td {
 
 #bodyTitle {
   width: 70%;
+}
+
+#headRating {
+  text-align: middle;
+}
+
+#bodyRating {
+  width: 17%;
+}
+
+.star-ratings-sprite {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  font-size: 0;
+  height: 21px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 110px;
+  margin: 0 auto;
+}
+
+.star-ratings-sprite-rating {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  background-position: 0 100%;
+  float: left;
+  height: 21px;
+  display:block;
 }
