@@ -17,12 +17,19 @@ const SaveRating = (props) => {
 
   const fetchRating = async () => {
     if (userId) {
-      const endRoute = movieId + "^" + userId;
-      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/ratings/101_dalmatiens");
-      const responseJson = await response.json();
-      console.log("response",responseJson);
-      /*setAlreadyRated(true);
-      setRating(responseJson);*/
+      try {
+        const endRoute = movieId + ":" + userId;
+        console.log(`https:// https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/ratings/${endRoute}`)
+        const response = await fetch(`https:// https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/ratings/${endRoute}`);
+        const responseJson = await response.json();
+        setAlreadyRated(true);
+        setRating(responseJson);
+        console.log("response",responseJson);
+      } catch (error) {
+        setAlreadyRated(false);
+        setRating(undefined);
+        console.log("You have not rated this movie already");
+      }
     };
   };
 
@@ -55,7 +62,8 @@ const SaveRating = (props) => {
 
   const handleClick = async () => {
     const opts = {movieId: movieId, userId: userId, rating: rating};
-    const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/ratings/", {
+    console.log(JSON.stringify(opts))
+    await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/ratings/", {
         method: 'post',
         body: JSON.stringify(opts)
       });
