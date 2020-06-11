@@ -20,7 +20,7 @@ const HomePage = (props) => {
     <div className="HomePage">
       <header className="HomePage-header">
         <img src={logo} className="HomePage-logo" alt="logo" />
-        <p>
+        <p style={{color: '#61dafb'}}>
           Site de recommandation de films
         </p>
         {displayWelcome()}

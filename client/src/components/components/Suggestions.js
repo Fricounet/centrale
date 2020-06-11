@@ -3,16 +3,15 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import "../styles/Suggestions.css"
 
 const SuggestionList = (props) => {
-  const { userId } = useLocation();
+  /*const { userId } = useLocation();*/
+  const userId = "demateo_jamal";
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
   const fetchMovies = async () => {
 		try {
-      console.log(userId)
-      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/recomOnCriterias/" + userId);
-      console.log(response)
+      const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/recomOnCriterias/" + userId);
       const responseJson = await response.json();
       setIsLoaded(true);
       setError(false);
@@ -45,24 +44,27 @@ const SuggestionList = (props) => {
         return <div>Loading...</div>;
       } else {
         return (
-          <table id="moviesTable">
-            <thead>
-              <tr>
-                <th className="movieListHeader" id="headTitle">Title</th>
-                <th className="movieListHeader" id="headRating">Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((item) => (
-                <tr key={item.uuid}>
-                  <td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
-                  <td className="movieListCell" id="bodyRating">
-                    <div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
-                  </td>
+          <>
+            <h2 style={{margin:15}}>Genres similaires à vos films préférés</h2>
+            <table id="moviesTable">
+              <thead>
+                <tr>
+                  <th className="movieListHeader" id="headTitle">Title</th>
+                  <th className="movieListHeader" id="headRating">Rating</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.uuid}>
+                    <td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
+                    <td className="movieListCell" id="bodyRating">
+                      <div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         );
       }
     } else {

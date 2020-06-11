@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
 
 const Connection = (props) => {
   const setUserId = props.setUserId;
@@ -117,11 +120,31 @@ const Registration = (props) => {
 const ConnectionPage = (props) => {
   const setUserId = props.setUserId;
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      padding: 10,
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+    },
+    section: {
+      margin: 60,
+      padding: 20,
+      backgroundColor: '#282c34',
+      minHeight: 300,
+      display: 'flex',
+      justifyItems: 'center',
+      flexWrap: 'wrap',
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
-    <div>
-      <Connection setUserId={setUserId} />
-      <Registration setUserId={setUserId} />
-    </div>
+    <Box className={classes.root}>
+      <Card className={classes.section}><Connection setUserId={setUserId} /></Card>
+      <Card className={classes.section}><Registration setUserId={setUserId} /></Card>
+    </Box>
   );
 };
 
