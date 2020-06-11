@@ -6,6 +6,7 @@ import "../styles/Navbar.css";
 const Navbar = (props) => {
     const userId = props.userId;
     const movieListLink = {pathname:'/movies', userId:userId};
+    const suggestionsLink = {pathname:'/suggestions', userId:userId};
 
     const displayConnection = () => {
         if (userId) {
@@ -39,6 +40,9 @@ const Navbar = (props) => {
                     </li>
                     <li className='NavbarLinks'>
                         <Link to='/save-movie'>Enregistrer un nouveau film</Link>
+                    </li>
+                    <li className='NavbarLinks'>
+                        <Link to={suggestionsLink}>Vous pourriez aimer...</Link>
                     </li>
                     {displayConnection()}
                 </ul>

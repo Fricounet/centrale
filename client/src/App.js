@@ -7,6 +7,7 @@ import MoviePage from "./components/components/MoviePage";
 import ConnectionPage from "./components/components/ConnectionPage";
 import DisconnectionPage from "./components/components/DisconnectionPage";
 import SaveMovie from "./components/components/SaveMovie";
+import Suggestions from "./components/components/Suggestions";
 
 function App() {
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/movies/search" component={MovieList} userId={selectedUserId}></Route>
         <Route path="/movies/:movieId" component={MoviePage} userId={selectedUserId}></Route>
         <Route path="/movies" component={MovieList} userId={selectedUserId}></Route>
+        <Route path="/suggestions" component={Suggestions} userId={selectedUserId}></Route>
         <Route path="/">
           <HomePage userId={selectedUserId} />
         </Route>
