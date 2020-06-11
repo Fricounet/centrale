@@ -9,7 +9,6 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import SaveRating from "./SaveRating";
 import "../styles/MoviePage.css";
-import image from '../cat.png';
 
 const MoviePage = (props) => {
   const [error, setError] = useState(null);
@@ -99,7 +98,6 @@ const MoviePage = (props) => {
   return (
     <div className="MoviePage">
       {displayMovie()}
-      <img scr={image} alt='affiche' />
     </div>
   );
 }
