@@ -2,8 +2,8 @@
     "resource": "/",
     "path": "/search",
     "httpMethod": "GET",
-    "multiValueQueryStringParameters": {"query": ["snow"],
-                                        "type": ["children"]
+    "multiValueQueryStringParameters": {
+                                        "type": ["sci-fi"]
                                         }
 
 }

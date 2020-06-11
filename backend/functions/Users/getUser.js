@@ -20,7 +20,7 @@ module.exports.handle = async event => {
             headers:{
                 'Access-Control-Allow-Origin':'*',
             },
-            body: JSON.stringify(result.Item.uuid),
+            body: JSON.stringify(result.Item),
         }
     } else {
         return {

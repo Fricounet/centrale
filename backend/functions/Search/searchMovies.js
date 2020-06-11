@@ -12,7 +12,7 @@ module.exports.handle = async event => {
             headers:{
                 'Access-Control-Allow-Origin':'*',
             },
-            body: JSON.stringify(listMoviesByCriteria)
+            body: JSON.stringify({ Movies: listMoviesByCriteria })
         }
     } else if (listMoviesByCriteria.length === 0) {
         return {
@@ -20,7 +20,7 @@ module.exports.handle = async event => {
             headers:{
                 'Access-Control-Allow-Origin':'*',
             },
-            body: JSON.stringify(listMoviesByName)
+            body: JSON.stringify({ Movies: listMoviesByName })
         }
     } else {
     const listMovies = listMoviesByName.filter(movie => {

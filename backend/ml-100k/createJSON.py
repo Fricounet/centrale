@@ -139,7 +139,7 @@ else:
             data_line = {"type": "rating"}
             user_id = users_id[elements[0]]
             movie_id = movies_id[elements[1]]
-            uuid = movie_id + "^" + user_id
+            uuid = movie_id + ":" + user_id
             data_line["uuid"] = uuid
             rating = elements[2]
             data_line["rating"] = rating

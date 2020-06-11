@@ -4,7 +4,7 @@ module.exports.handle = async event => {
     if (!process.env.tableName) {
         throw new Error('env.tableName must be defined');
     }
-
+    console.log(event.pathParameters)
     const dynamoDb = new DynamoDB.DocumentClient();
     const result = await dynamoDb.get({
         TableName: process.env.tableName,
@@ -28,7 +28,7 @@ module.exports.handle = async event => {
             headers:{
                 'Access-Control-Allow-Origin':'*',
             },
-            body: JSON.stringify('Not found'),
+            body: JSON.stringify(event),
         }
     }
 }
