@@ -2,6 +2,6 @@
     "resource": "/",
     "path": "/ratings",
     "httpMethod": "GET",
-    "multiValueQueryStringParameters": { "movie": ["eventhorizon"] }
+    "multiValueQueryStringParameters": { "user": ["demateo_jamal"] }
 
 }
