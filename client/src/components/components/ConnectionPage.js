@@ -11,23 +11,20 @@ const Connection = (props) => {
   const inputFisrtName = React.createRef();
 
   const checkUserExists = async (userId) => {
-    try {
     const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/" + userId);
     const responseJson = await response.json();
-    console.log("user exists", responseJson);
-    setUserId(userId);
-    setUserIsLoaded(true);
-    } catch(error) {
+    if (responseJson == 'Not found') {
       setUserExists(false);
-      console.log(userExists);
       setUserIsLoaded(true);
-      console.log(userIsLoaded);
-      console.log("user doesn't exists");
-      console.log(userId);
+    } else {
+      setUserId(userId);
+      setUserExists(true);
+      setUserIsLoaded(true);
     }
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const name = inputName.current.value.toLowerCase().replace(/[^a-zA-Z0-9]/g, " ").replace(' ', '_');
     const firstName = inputFisrtName.current.value.toLowerCase().replace(/[^a-zA-Z0-9]/g, " ").replace(' ', '_');
     const userId = name + "_" + firstName;
@@ -86,18 +83,20 @@ const Registration = (props) => {
   const inputName = React.createRef();
   const inputFisrtName = React.createRef();
 
-  const createUser = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const name = inputName.current.value.toLowerCase().replace(/[^a-zA-Z0-9]/g, " ").replace(' ', '_');
+    const firstName = inputFisrtName.current.value.toLowerCase().replace(/[^a-zA-Z0-9]/g, " ").replace(' ', '_');
+    const userId = name + "_" + firstName;
     const opts = {'lastname': inputName.current.value, 'firstname': inputFisrtName.current.value};
     const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/", {
       method: 'post',
       body: JSON.stringify(opts)
     });
-  };
-
-  const handleSubmit = (event) => {
-    const userId = inputName.current.value + "_" + inputFisrtName.current.value;
-    setUserId();
-    event.preventDefault();
+    setUserId(userId);
+    const response_get = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/renaud_pauline");
+    const responseJson = await response_get.json();
+    console.log(responseJson);
     return (
       history.push("/")
     );
