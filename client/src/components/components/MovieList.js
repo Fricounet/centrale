@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
@@ -11,13 +11,17 @@ import Button from '@material-ui/core/Button';
 import "../styles/MovieList.css"
 
 const MovieList = (props) => {
-	const userId = props.location.userId;
-	console.log(userId);
+	const { userId } = useLocation();
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
-	const { pathname } = useLocation();
-	const pathElements = pathname.split('/');
+	const query = props.query;
+	console.log("props", props);
+	console.log("query", query);
+	const { search } = useLocation();
+	console.log(search);
+	const history = useHistory();
+	const [titleQuery, setTitleQuery] = useState("");
 	const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
 	const [checkboxes, setCheckboxes] = useState({
 		'unknown': false,
@@ -43,8 +47,14 @@ const MovieList = (props) => {
 
 	const fetchMovies = async () => {
 		try {
-			const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			var route = "https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies/search?type=action";
+			/*if (query) {
+				route += "/search?" + query;
+			};*/
+			console.log("route", route);
+			const response = await fetch(route);
 			const responseJson = await response.json();
+			console.log(responseJson);
 			setIsLoaded(true);
 			setError(false);
 			setItems(responseJson.Movies);
@@ -101,7 +111,31 @@ const MovieList = (props) => {
 		const type = event.target.name;
 		dico[type] =  !dico[type];
 		setCheckboxes(dico);
-	  };
+	};
+
+	const handleClick = () => {
+		var query = "";
+		for (var i = 0; i < movieTypes.length; i++) {
+			const type = movieTypes[i];
+			if (checkboxes[type]) {
+				if (query !== "") {
+					query += "&";
+				};
+				query += "type=" + type;
+			};
+		};
+		const endQuery = titleQuery.toLowerCase().replace(/[^a-zA-Z0-9]/g, " ").replace(' ', '_');
+		if (endQuery !== "") {
+			if (query !== "") {
+				query += "&";
+			};
+			query += "query=" + endQuery
+		};
+		return (
+			history.push("/movies/search?" + query)
+		);
+	};
+
 
 	return (
 		<div id="movieList">
@@ -109,6 +143,7 @@ const MovieList = (props) => {
 			<Box ml={0.7} mr={3}>
 				<TextField size='small'
 					label="Recherche par titre"
+					onChange={(event) => {setTitleQuery(event.target.value)}}
 					style={{ margin: 8 }}
 					placeholder="Rechercher..."
 					fullWidth
@@ -134,7 +169,7 @@ const MovieList = (props) => {
 				))}
 			</Box>
 			<Box display="flex" justifyContent="center" mt={0.5} mb={1} p={1}>
-				<Button variant="contained" color="primary">Rechecrher</Button>
+				<Button variant="contained" color="primary" onClick={handleClick}>Rechercher</Button>
 			</Box>
 			{displayMovies()}
 		</div>

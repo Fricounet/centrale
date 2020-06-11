@@ -12,6 +12,7 @@ const SaveRating = (props) => {
   const movieId = props.movieId;
   const userId = props.userId;
   const [rating, setRating] = useState(null);
+  const [alreadyRated, setAlreadyRated] = useState(true);
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -38,7 +39,6 @@ const SaveRating = (props) => {
   }
 
   const display = () => {
-    console.log(userId);
     if (userId) {
       return (
         <div className="SaveRating">
