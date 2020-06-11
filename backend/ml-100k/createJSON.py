@@ -2,6 +2,9 @@ import os.path
 import sys
 import json
 import names
+import numpy as np
+import pandas as pd
+from scipy import stats
 
 os.chdir(os.path.dirname(sys.argv[0]))
 
@@ -163,6 +166,50 @@ for movie in waiting_list:
     nb_movies += 1
 print(f"Nb de films {nb_movies}")
 print(len(data[db]) == nb_movies + nb_users + nb_ratings)
+
+
+data_cols = ['user_id','item_id','rating','timestamp']
+data_bis = pd.read_csv('u.data', sep='\t',names=data_cols, encoding='latin-1')
+
+nb_users = data_bis.user_id.unique().shape[0]
+nb_items = data_bis.item_id.unique().shape[0]
+ratings = pd.DataFrame(data_bis.groupby('item_id')['rating'].mean())
+
+data_matrix = np.zeros((nb_users, nb_items))
+for line in data_bis.itertuples():
+    data_matrix[line[1]-1, line[2]-1] = line[3]
+
+user_similarity = np.zeros((nb_users, nb_users))
+for i in range(nb_users):
+    for j in range(nb_users):
+        user_similarity[i][j] = stats.pearsonr(data_matrix[i], data_matrix[j])[0]
+
+def predict(ratings, similarity):
+    predictions = similarity.dot(ratings) / np.array([np.abs(similarity).sum(axis=1)]).T
+
+    return predictions
+
+user_prediction = predict(data_matrix, user_similarity)
+print(user_prediction)
+max = np.amax(user_prediction)
+min = np.amin(user_prediction)
+
+for i in range(len(user_prediction)):
+    for j in range(len(user_prediction[0])):
+        if (str(i + 1) in users_id.keys()) and (str(j + 1) in movies_id.keys()):
+            data_line = {"type": "predictedRating"}
+            user_id = users_id[str(i + 1)]
+            movie_id = movies_id[str(j + 1)]
+            uuid = movie_id + ":" + user_id
+            data_line["uuid"] = uuid
+            rating = round(user_prediction[i][j] + 1, 1)
+            if rating > 4:
+                print(rating)
+            data_line["rating"] = str(rating)
+
+            data_ratings = {"PutRequest": {"Item": data_line}}
+            data[db].append(data_ratings)
+
 
 # Write data to json format
 with open('../data.json', 'w') as outfile:
