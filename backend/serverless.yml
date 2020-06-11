@@ -140,7 +140,7 @@ functions:
     events:
       - http:
           method: get
-          path: getRecomOnCrit
+          path: recomOnCriterias/{id}
           cors:
             origin: http://localhost:3000
             allowCredentials: true
