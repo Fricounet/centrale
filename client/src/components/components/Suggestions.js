@@ -3,8 +3,7 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import "../styles/Suggestions.css"
 
 const SuggestionList = (props) => {
-  /*const { userId } = useLocation();*/
-  const userId = "demateo_jamal";
+  const { userId } = useLocation();
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
