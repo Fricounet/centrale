@@ -10,7 +10,7 @@ const SuggestionList = (props) => {
 
   const fetchMovies = async () => {
 		try {
-      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/getRecomOnCriterias/" + userId);
+      const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/getRecomOnCriterias/" + userId);
       console.log(response)
       const responseJson = await response.json();
       setIsLoaded(true);

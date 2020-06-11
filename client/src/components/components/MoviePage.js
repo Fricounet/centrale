@@ -42,7 +42,7 @@ const MoviePage = (props) => {
 
   const fetchMovies = async () => {
 		try {
-      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
+      const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
       const responseJson = await response.json();
       setIsLoaded(true);
       setError(false);

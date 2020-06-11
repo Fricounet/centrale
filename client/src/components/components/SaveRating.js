@@ -55,7 +55,7 @@ const SaveRating = (props) => {
 
   const handleClick = async () => {
     const opts = {movieId: movieId, userId: userId, rating: rating};
-    const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/ratings/", {
+    const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/ratings/", {
         method: 'post',
         body: JSON.stringify(opts)
       });
