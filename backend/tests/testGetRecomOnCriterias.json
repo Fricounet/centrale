@@ -2,5 +2,5 @@
   "resource": "/",
   "path": "/getRecomOnCriterias",
   "httpMethod": "GET",
-  "pathParameters": { "id": "demateo_jamal" }
+  "pathParameters": { "id": "abbott_joseph" }
 }
