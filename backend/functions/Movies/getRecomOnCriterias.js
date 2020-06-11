@@ -6,6 +6,15 @@ module.exports.handle = async event => {
     const userId = event.multiValueQueryStringParameters.user;
     const userRatings = userId != undefined ? JSON.parse((await getRatings.handle({ "multiValueQueryStringParameters": { "user": userId } })).body).Ratings : [];
 
+    if (!userRatings){
+        return {
+            statusCode: 404,
+            headers:{
+                'Access-Control-Allow-Origin':'*',
+            },
+            body: JSON.stringify('No ratings for this user'),
+        }
+    }
 
     // Get movies uuid (to make sure we do not suggest an already rated movie), and select movies rated >2 by user
     const moviesUuid = [];
@@ -36,6 +45,15 @@ module.exports.handle = async event => {
         moviesInfo.push(info)
     }
     
+    if (!moviesInfo) {
+        return {
+            statusCode: 404,
+            headers:{
+                'Access-Control-Allow-Origin':'*',
+            },
+            body: JSON.stringify('No movies found in DB - servor error'),
+        }
+    }
     // Calculate presence of each criteria in the list of rated movies.
     const criterias = Object.assign({}, moviesInfo[0].Item);
     for (const criteria in criterias) {
