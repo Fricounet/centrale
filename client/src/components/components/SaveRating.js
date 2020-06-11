@@ -39,6 +39,12 @@ const SaveRating = (props) => {
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    SaveRating: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+    },
   }));
 
   const classes = useStyles();

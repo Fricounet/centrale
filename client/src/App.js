@@ -24,7 +24,7 @@ function App() {
         <Route path="/save-movie">
           <SaveMovie />
         </Route>
-        <Route path="/movies/search?" component={MovieList} userId={selectedUserId}></Route>
+        <Route path="/movies/search" component={MovieList} userId={selectedUserId}></Route>
         <Route path="/movies/:movieId" component={MoviePage} userId={selectedUserId}></Route>
         <Route path="/movies" component={MovieList} userId={selectedUserId}></Route>
         <Route path="/">

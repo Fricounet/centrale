@@ -15,11 +15,9 @@ const MovieList = (props) => {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
-	const query = props.query;
-	console.log("props", props);
-	console.log("query", query);
-	const { search } = useLocation();
-	console.log(search);
+	const { pathname } = useLocation();
+	const pathElements = pathname.split("/");
+	const search = pathElements[pathElements.length - 1];
 	const history = useHistory();
 	const [titleQuery, setTitleQuery] = useState("");
 	const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
@@ -47,10 +45,10 @@ const MovieList = (props) => {
 
 	const fetchMovies = async () => {
 		try {
-			var route = "https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies/search?type=action";
-			/*if (query) {
-				route += "/search?" + query;
-			};*/
+			var route = "https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies";
+			if (search !== 'movies') {
+				route += "/search?" + search;
+			};
 			console.log("route", route);
 			const response = await fetch(route);
 			const responseJson = await response.json();
@@ -72,9 +70,8 @@ const MovieList = (props) => {
 	};
 
 	useEffect(() => {
-		setIsLoaded(false);
 		fetchMovies();
-	}, []);
+	}, [isLoaded]);
 
 	//Need to change order of columns, and columns titles, but the skeleton is here
 	const displayMovies = () => {
@@ -131,8 +128,11 @@ const MovieList = (props) => {
 			};
 			query += "query=" + endQuery
 		};
+		console.log("submit query :", query)
+		const path = "/movies/search/" + query;
+		setIsLoaded(false);
 		return (
-			history.push("/movies/search?" + query)
+			history.push(path)
 		);
 	};
 
