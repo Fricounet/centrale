@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import SaveRating from "./SaveRating";
 import "../styles/MoviePage.css";
+import image from '../cat.png';
 
 const MoviePage = (props) => {
   const [error, setError] = useState(null);
@@ -20,7 +22,7 @@ const MoviePage = (props) => {
   const userId = props.location.userId;
 
   const useStyles = makeStyles((theme) => ({
-    root: {
+    mainCard: {
       minWidth: 400,
       minHeight: 300,
       padding: 10,
@@ -77,17 +79,19 @@ const MoviePage = (props) => {
 			return <div>Loading...</div>;
 		} else {
 			return (
-        <Card className={classes.root}>
-          <CardContent>
-            <Typography component="h2">Titre - {movie.title}</Typography>
-            <Typography>Date de sortie : {movie["release date"]}</Typography>
-            <Typography>Genres :</Typography>
-            <Paper component="ul" className={classes.chipArray}>
-              {displayTypes()}
-            </Paper>
-          </CardContent>
-          <SaveRating movieId={movieId} userId={userId} />
-        </Card>
+        <Box>
+          <Card className={classes.mainCard}>
+            <CardContent>
+              <Typography component="h2">Titre - {movie.title}</Typography>
+              <Typography>Date de sortie : {movie["release date"]}</Typography>
+              <Typography>Genres :</Typography>
+              <Paper component="ul" className={classes.chipArray}>
+                {displayTypes()}
+              </Paper>
+            </CardContent>
+            <SaveRating movieId={movieId} userId={userId} />
+          </Card>
+        </Box>
 			)
 		}
 	};
@@ -95,6 +99,7 @@ const MoviePage = (props) => {
   return (
     <div className="MoviePage">
       {displayMovie()}
+      <img scr={image} alt='affiche' />
     </div>
   );
 }
