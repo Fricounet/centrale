@@ -5,6 +5,7 @@ import "../styles/Navbar.css";
 
 const Navbar = (props) => {
     const userId = props.userId;
+    const movies = {pathname: '/movies', userId: userId};
 
     const displayConnection = () => {
         if (userId) {
@@ -34,7 +35,7 @@ const Navbar = (props) => {
                         <Link to='/'>Accueil</Link>
                     </li>
                     <li className='NavbarLinks'>
-                        <Link to='/movies'>Tous les films</Link>
+                        <Link to={movies}>Tous les films</Link>
                     </li>
                     <li className='NavbarLinks'>
                         <Link to='/save-movie'>Enregistrer un nouveau film</Link>

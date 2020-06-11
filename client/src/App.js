@@ -25,9 +25,7 @@ function App() {
           <SaveMovie />
         </Route>
         <Route path="/movies/:movieId" component={MoviePage} userId={selectedUserId}></Route>
-        <Route path="/movies">
-          <MovieList />
-        </Route>
+        <Route path="/movies" component={MovieList} userId={selectedUserId}></Route>
         <Route path="/">
           <HomePage userId={selectedUserId} />
         </Route>

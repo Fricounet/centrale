@@ -10,7 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import "../styles/MovieList.css"
 
-const MovieList = () => {
+const MovieList = (props) => {
+	const userId = props.location.userId;
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
@@ -41,7 +42,7 @@ const MovieList = () => {
 
 	const fetchMovies = async () => {
 		try {
-			const response = await fetch(" https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies");
+			const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies");
 			const responseJson = await response.json();
 			setIsLoaded(true);
 			setError(false);
@@ -56,6 +57,18 @@ const MovieList = () => {
 		setIsLoaded(false);
 		fetchMovies();
 	}, []);
+
+	const displayRow = (item) => {
+		const link = {pathname:`/movies/${item.uuid}`, userId:userId};
+		return (
+			<tr key={item.uuid}>
+				<td className="movieListCell" id="bodyTitle"><Link className="movieLink" to={link}>{item.title}</Link></td>
+				<td className="movieListCell" id="bodyRating">
+					<div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
+				</td>
+			</tr>
+		);
+	};
 
 	//Need to change order of columns, and columns titles, but the skeleton is here
 	const displayMovies = () => {
@@ -73,14 +86,7 @@ const MovieList = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{items.map((item) => (
-							<tr key={item.uuid}>
-								<td className="movieListCell" id="bodyTitle"><Link className="movieLink" to={`/movies/${item.uuid}`}>{item.title}</Link></td>
-								<td className="movieListCell" id="bodyRating">
-									<div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
-								</td>
-							</tr>
-						))}
+						{items.map((item) => {displayRow(item)})}
 					</tbody>
 				</table>
 			);

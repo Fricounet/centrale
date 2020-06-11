@@ -12,10 +12,11 @@ const MoviePage = (props) => {
 
   const { movieId } = useParams();
   const userId = props.userId;
+  console.log(userId);
 
   const fetchMovies = async () => {
 		try {
-      const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
+      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
       const responseJson = await response.json();
       setIsLoaded(true);
       setError(false);

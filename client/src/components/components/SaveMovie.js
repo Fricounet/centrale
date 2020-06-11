@@ -54,7 +54,7 @@ const SaveMovie = () => {
 
   const handleClick = async () => {
     const opts = createOpts();
-    const response = await fetch("https://y2nm5r8mg9.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
+    const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
       method: 'post',
       body: JSON.stringify(opts)
     });
