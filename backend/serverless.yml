@@ -50,7 +50,7 @@ functions:
     events:
       - http:
           method: get
-          path: search
+          path: movies/search
           cors:
             origin: http://localhost:3000
             allowCredentials: true
