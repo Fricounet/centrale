@@ -135,12 +135,12 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
-  getRecomOnStyle:
-    handler: functions/Movies/getRecomOnStyle.handle
+  getRecomOnCriterias:
+    handler: functions/Movies/getRecomOnCriterias.handle
     events:
       - http:
           method: get
-          path: getRecomOnStyle
+          path: getRecomOnCrit
           cors:
             origin: http://localhost:3000
             allowCredentials: true
