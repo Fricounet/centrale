@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import MovieList from "./components/components/MovieList";
 import HomePage from "./components/components/HomePage";
 import Navbar from "./components/components/Navbar";
-import MoviePage from "./components/components/MoviePage"
-import ConnectionPage from "./components/components/ConnectionPage"
-import DisconnectionPage from "./components/components/DisconnectionPage"
-import SaveMovie from "./components/components/SaveMovie"
+import MoviePage from "./components/components/MoviePage";
+import ConnectionPage from "./components/components/ConnectionPage";
+import DisconnectionPage from "./components/components/DisconnectionPage";
+import SaveMovie from "./components/components/SaveMovie";
 
 function App() {
   const [selectedUserId, setSelectedUserId] = useState(null);

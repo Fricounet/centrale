@@ -12,6 +12,7 @@ import "../styles/MovieList.css"
 
 const MovieList = (props) => {
 	const userId = props.location.userId;
+	console.log(userId);
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
@@ -53,22 +54,17 @@ const MovieList = (props) => {
 		}
 	};
 
+	const insertLink = (item) => {
+		const link = {pathname:`/movies/${item.uuid}`, userId:userId};
+		return (
+			<Link className="movieLink" to={link}>{item.title}</Link>
+		);
+	};
+
 	useEffect(() => {
 		setIsLoaded(false);
 		fetchMovies();
 	}, []);
-
-	const displayRow = (item) => {
-		const link = {pathname:`/movies/${item.uuid}`, userId:userId};
-		return (
-			<tr key={item.uuid}>
-				<td className="movieListCell" id="bodyTitle"><Link className="movieLink" to={link}>{item.title}</Link></td>
-				<td className="movieListCell" id="bodyRating">
-					<div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
-				</td>
-			</tr>
-		);
-	};
 
 	//Need to change order of columns, and columns titles, but the skeleton is here
 	const displayMovies = () => {
@@ -86,7 +82,14 @@ const MovieList = (props) => {
 						</tr>
 					</thead>
 					<tbody>
-						{items.map((item) => {displayRow(item)})}
+						{items.map((item) => (
+							<tr key={item.uuid}>
+								<td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
+								<td className="movieListCell" id="bodyRating">
+									<div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			);

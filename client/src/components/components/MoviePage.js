@@ -11,7 +11,7 @@ const MoviePage = (props) => {
   const [fetchAgain, setFetchAgain] = useState(false);
 
   const { movieId } = useParams();
-  const userId = props.userId;
+  const userId = props.location.userId;
   console.log(userId);
 
   const fetchMovies = async () => {
