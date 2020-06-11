@@ -4,7 +4,7 @@ const serchMovieByCriteria = require('../Search/searchMoviesByCriteria');
 
 module.exports.handle = async event => {
     const userId = event.pathParameters.id;
-    const userRatings = userId != undefined ? JSON.parse((await getRatings.handle({ "multiValueQueryStringParameters": { "user": userId } })).body).Ratings : [];
+    const userRatings = userId != undefined ? JSON.parse((await getRatings.handle({ "multiValueQueryStringParameters": { "user": [userId] } })).body).Ratings : [];
 
     if (!userRatings){
         return {
@@ -19,17 +19,17 @@ module.exports.handle = async event => {
     // Get movies uuid (to make sure we do not suggest an already rated movie), and select movies rated >2 by user
     const moviesUuid = [];
     userRatings.forEach(movie => moviesUuid.push(movie.uuid.slice(0, - (userId[0].length + 1))));
-    
+
     const preferedMoviesUuid = [];
     const preferedRatedMovies = userRatings.filter(movieRating => parseInt(movieRating.rating) > 2);
     
-    preferedRatedMovies.forEach(movie => preferedMoviesUuid.push(movie.uuid.slice(0, - (userId[0].length + 1))));
-
+    preferedRatedMovies.forEach(movie => preferedMoviesUuid.push(movie.uuid.slice(0, - (userId.length + 1))));
+    console.log(preferedMoviesUuid)
 
     // Get info on well rated movies
     const dynamoDb = new DynamoDB.DocumentClient();
     const moviesInfo = [];
-    for (const movieUuid of moviesUuid) {
+    for (const movieUuid of preferedMoviesUuid) {
         const info = await dynamoDb.get({
             TableName: process.env.tableName,
             Key: {
