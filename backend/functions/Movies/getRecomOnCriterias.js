@@ -3,7 +3,7 @@ const getRatings = require('../Ratings/getRatings');
 const serchMovieByCriteria = require('../Search/searchMoviesByCriteria');
 
 module.exports.handle = async event => {
-    const userId = event.multiValueQueryStringParameters.user;
+    const userId = event.pathParameters.id;
     const userRatings = userId != undefined ? JSON.parse((await getRatings.handle({ "multiValueQueryStringParameters": { "user": userId } })).body).Ratings : [];
 
     if (!userRatings){
