@@ -1,0 +1,7 @@
+{
+  "resource": "/",
+  "path": "/getRecomOnStyle",
+  "httpMethod": "GET",
+  "multiValueQueryStringParameters": { "user": ["zepp_kristopher"] }
+
+}

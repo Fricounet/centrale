@@ -135,6 +135,16 @@ functions:
             origin: http://localhost:3000
             allowCredentials: true
 
+  getRecomOnStyle:
+    handle: functions/Movies/recommendationOnStyles.handle
+    events:
+      - http:
+          method: get
+          path: getRecomOnStyle
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
 custom:
   stageVars: ${file(./stage.${self:provider.stage}.yml)}
 
