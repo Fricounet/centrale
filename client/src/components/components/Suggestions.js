@@ -67,7 +67,11 @@ const SuggestionList = (props) => {
       }
     } else {
       return (
-        <div id = "NotConnected">Connectez-vous pour voir vos suggestions !</div>
+        <div>
+          <h2 id = "NotConnectedSuggestionList">
+            Connectez-vous pour voir vos suggestions !
+          </h2>
+        </div>
       );
     }
   };
