@@ -22,7 +22,7 @@ module.exports.handle = async event => {
 
     const preferedMoviesUuid = [];
     const preferedRatedMovies = userRatings.filter(movieRating => parseInt(movieRating.rating) > 2);
-    
+
     preferedRatedMovies.forEach(movie => preferedMoviesUuid.push(movie.uuid.slice(0, - (userId.length + 1))));
     console.log(preferedMoviesUuid)
 
