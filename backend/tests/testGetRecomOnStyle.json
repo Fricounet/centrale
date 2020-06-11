@@ -2,6 +2,5 @@
   "resource": "/",
   "path": "/getRecomOnStyle",
   "httpMethod": "GET",
-  "multiValueQueryStringParameters": { "user": ["zepp_kristopher"] }
-
+  "multiValueQueryStringParameters": { "user": ["zebell_james"] }
 }
