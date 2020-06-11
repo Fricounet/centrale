@@ -136,7 +136,7 @@ functions:
             allowCredentials: true
 
   getRecomOnStyle:
-    handle: functions/Movies/recommendationOnStyles.handle
+    handler: functions/Movies/getRecomOnStyle.handle
     events:
       - http:
           method: get
