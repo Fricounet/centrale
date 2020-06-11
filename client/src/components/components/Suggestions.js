@@ -10,7 +10,8 @@ const SuggestionList = (props) => {
 
   const fetchMovies = async () => {
 		try {
-      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/getRecomOnCriterias/" + userId);
+      console.log(userId)
+      const response = await fetch("https://5gco9axqge.execute-api.eu-west-1.amazonaws.com/dev/recomOnCriterias/" + userId);
       console.log(response)
       const responseJson = await response.json();
       setIsLoaded(true);
@@ -66,7 +67,7 @@ const SuggestionList = (props) => {
       }
     } else {
       return (
-        <div>Connectez-vous pour voir vos suggestions !</div>
+        <div id = "NotConnected">Connectez-vous pour voir vos suggestions !</div>
       );
     }
   };
