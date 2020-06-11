@@ -1,6 +1,6 @@
 {
   "resource": "/",
-  "path": "/getRecomOnStyle",
+  "path": "/getRecomOnCriterias",
   "httpMethod": "GET",
   "multiValueQueryStringParameters": { "user": ["zebell_james"] }
 }
