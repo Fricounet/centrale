@@ -94,9 +94,6 @@ const Registration = (props) => {
       body: JSON.stringify(opts)
     });
     setUserId(userId);
-    const response_get = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/renaud_pauline");
-    const responseJson = await response_get.json();
-    console.log(responseJson);
     return (
       history.push("/")
     );

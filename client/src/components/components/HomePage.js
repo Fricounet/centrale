@@ -25,21 +25,7 @@ const HomePage = (props) => {
         </p>
         {displayWelcome()}
         <p>
-          <a
-            className="HomePage-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Notez 
-          </a>
-          vos films préférés et accédez à votre recommandation personnalisée !
-        </p>
-        <p>
-          Films préférés de nos utilisateurs
-        </p>
-        <p>
-          Derniers films ajoutés
+          Notez vos films préférés et accédez à votre recommandation personnalisée !
         </p>
       </header>
     </div>
