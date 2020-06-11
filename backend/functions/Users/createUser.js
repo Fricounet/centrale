@@ -9,7 +9,7 @@ module.exports.handle = async event => {
     const dynamoDb = new DynamoDB.DocumentClient();
     const user = {
         ...data,
-        uuid: data.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""),
+        uuid: data.lastname.toLowerCase().replace(/[^a-z0-9]/g, "") + "_" + data.firstname.toLowerCase().replace(/[^a-z0-9]/g, ""),
         type: "user"
     }
 
@@ -17,7 +17,7 @@ module.exports.handle = async event => {
         TableName: process.env.tableName,
         Item: user,
     }).promise();
-    
+
     return {
         statusCode: 200,
         headers:{
