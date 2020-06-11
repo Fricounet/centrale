@@ -84,8 +84,8 @@ const MovieList = (props) => {
 				<table id="moviesTable">
 					<thead>
 						<tr>
-							<th className="movieListHeader" id="headTitle">Title</th>
-							<th className="movieListHeader" id="headRating">Rating</th>
+							<th className="movieListHeader" id="headTitle">Titre</th>
+							<th className="movieListHeader" id="headRating">Note Moyenne</th>
 						</tr>
 					</thead>
 					<tbody>
