@@ -30,7 +30,8 @@ L'objectif est de développer le front d'une application de recommandations pers
 - une route pour la récupération d'un rating                         --> done
 
 #### Palier 3
-- une route qui pour un film donné, retourne une liste de films correspondants recommandés
+- une route qui pour un film donné, retourne une liste de films correspondants recommandés  --> done
+- une route qui pour un user donné, retourne une liste de films qu'il pourrait aimer        --> done (plus ou moins)
 
 ### Attendu front
 
