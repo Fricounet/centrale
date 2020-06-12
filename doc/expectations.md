@@ -11,7 +11,7 @@ L'objectif est de développer le front d'une application de recommandations pers
 
 #### Palier 1
 - [ ] une route pour la récupération d'un film  --> done
-- [ ] une route pour créer des films            --> done
+- [X] une route pour créer des films            --> done
 - une route pour lister des films           --> done
 
 ##### Fonctionnalités en plus
