@@ -126,11 +126,11 @@ const ConnectionPage = (props) => {
       display: 'flex',
       justifyContent: 'center',
       flexWrap: 'wrap',
+      backgroundColor: '#282c34',
     },
     section: {
       margin: 60,
       padding: 20,
-      backgroundColor: '#282c34',
       minHeight: 300,
       display: 'flex',
       justifyItems: 'center',

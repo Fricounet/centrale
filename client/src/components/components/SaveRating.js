@@ -31,7 +31,6 @@ const SaveRating = (props) => {
   };
 
   useEffect(() => {
-    setAlreadyRated(false);
 		fetchRating();
 	}, []);
 
@@ -60,16 +59,20 @@ const SaveRating = (props) => {
         method: 'post',
         body: JSON.stringify(opts)
       });
+    setAlreadyRated(true);
   }
 
   const display = () => {
     if (userId) {
       if (alreadyRated) {
-        return <div>Votre note pour ce film : {rating}</div>;
+        return (
+          <div>Votre note pour ce film : <Rating value={rating} readOnly /></div>
+        );
       } else {
         return (
           <Box className="SaveRating">
             <Rating
+              name='choseRating'
               value={rating}
               onChange={(event, newValue) => {
                 setRating(newValue);

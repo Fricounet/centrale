@@ -4,6 +4,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
 
 const SaveMovie = () => {
   const inputTitle = React.createRef();
@@ -30,6 +33,27 @@ const SaveMovie = () => {
     'war': false,
     'western': false
   });
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      paddingTop: 40,
+      paddingBottom: 45,
+      paddingLeft: 100,
+      paddingRight:100,
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      backgroundColor: '#282c34',
+    },
+    card: {
+      padding: 20,
+      display: 'flex',
+      justifyItems: 'center',
+      flexWrap: 'wrap',
+    },
+  }));
+
+  const classes = useStyles();
 
   const handleChange = (event) => {
     const dico = checkboxes;
@@ -61,23 +85,25 @@ const SaveMovie = () => {
   };
 
   return (
-    <div>
-      <h2>Enregistrer un nouveau film</h2>
-      <form>
-        <label>Titre :</label><br />
-        <input type="text" ref={inputTitle} /><br />
-        <label>Date de sortie (au format 01-Jan-1995) :</label><br />
-        <input type="text" ref={inputReleaseDate} /><br />
-        <label>Type de film :</label><br />
-        {movieTypes.map((type) => (
-          <FormControlLabel
-            control={<Checkbox onChange={handleChange} name={type} />}
-            label={type}
-          />
-        ))}
+    <Box className={classes.root}>
+      <Card className={classes.card}>
+        <h2>Enregistrer un nouveau film</h2>
+        <form>
+          <label>Titre :</label><br />
+          <input type="text" ref={inputTitle} /><br />
+          <label>Date de sortie (au format 01-Jan-1995) :</label><br />
+          <input type="text" ref={inputReleaseDate} /><br />
+          <label>Type de film :</label><br />
+          {movieTypes.map((type) => (
+            <FormControlLabel
+              control={<Checkbox onChange={handleChange} name={type} />}
+              label={type}
+            />
+          ))}
+        </form>
         <Button startIcon={<SaveIcon />} onClick={() => {handleClick()}}>Enregistrer</Button>
-      </form>
-    </div>
+      </Card>
+    </Box>
   );
 
 };
