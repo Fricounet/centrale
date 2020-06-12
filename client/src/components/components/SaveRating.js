@@ -50,7 +50,7 @@ const SaveRating = (props) => {
     },
   }));
 
-  const classes = useStyles();
+  useStyles();
 
   const handleClick = async () => {
     const opts = {movieId: movieId, userId: userId, rating: rating};

@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
+import Rating from '@material-ui/lab/Rating';
 import SaveRating from "./SaveRating";
 import "../styles/MoviePage.css";
 
@@ -14,8 +15,8 @@ const MoviePage = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
-  const [fetchAgain, setFetchAgain] = useState(false);
-  const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
+ // const [fetchAgain, setFetchAgain] = useState(false);
+ // const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
 
   const { movieId } = useParams();
   const userId = props.location.userId;
@@ -57,12 +58,12 @@ const MoviePage = (props) => {
 	useEffect(() => {
 		setIsLoaded(false);
 		fetchMovies();
-  }, [fetchAgain]);
+  }, []); // fetchAgain]);
 
   const displayTypes = () => {
     const typesToDisplay = [];
     for (const key in movie) {
-      if (movie[key] == "1") {
+      if (movie[key] === "1") {
         typesToDisplay.push(key);
       };
     };
@@ -82,6 +83,7 @@ const MoviePage = (props) => {
           <Card className={classes.mainCard}>
             <CardContent>
               <Typography component="h2">Titre - {movie.title}</Typography>
+              <Rating value={parseFloat(movie.AvgRating)} precision={0.1} readOnly />
               <Typography>Date de sortie : {movie["release date"]}</Typography>
               <Typography>Genres :</Typography>
               <Paper component="ul" className={classes.chipArray}>

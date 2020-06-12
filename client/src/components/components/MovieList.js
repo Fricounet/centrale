@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
-import Rating from '@material-ui/lab/Rating';
+// import Rating from '@material-ui/lab/Rating';
 import "../styles/MovieList.css"
 
 const MovieList = (props) => {
@@ -47,13 +47,11 @@ const MovieList = (props) => {
 	const fetchMovies = async () => {
 		try {
 			var route = "https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/movies";
-			if (search !== 'movies') {
+			if (search !== 'movies' && search !== '') {
 				route += "/search?" + search;
 			};
-			console.log("route", route);
 			const response = await fetch(route);
 			const responseJson = await response.json();
-			console.log(responseJson);
 			setIsLoaded(true);
 			setError(false);
 			setItems(responseJson.Movies);
@@ -130,7 +128,6 @@ const MovieList = (props) => {
 			};
 			query += "query=" + endQuery
 		};
-		console.log("submit query :", query)
 		const path = "/movies/search/" + query;
 		setIsLoaded(false);
 		return (
@@ -165,6 +162,7 @@ const MovieList = (props) => {
 				<Typography variant="caption" >Recherche par genre</Typography><br />
 				{movieTypes.map((type) => (
 					<FormControlLabel
+						key= {type}
 						control={<Checkbox onChange={handleChange} name={type} />}
 						label={type}
 					/>

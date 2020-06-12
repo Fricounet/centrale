@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import "../styles/Suggestions.css"
 
@@ -7,7 +7,8 @@ const SuggestionList = (props) => {
   const { userId } = useLocation();
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+  const [itemsForTypes, setItemsForTypes] = useState([]);
+  const [itemsCollaborative, setItemsCollaborative] = useState([]);
 
   const fetchMovies = async () => {
 		try {
@@ -15,7 +16,13 @@ const SuggestionList = (props) => {
       const responseJson = await response.json();
       setIsLoaded(true);
       setError(false);
-      setItems(responseJson);
+      setItemsForTypes(responseJson);
+      const response2 = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/recomOnCriterias/" + userId);
+      const responseJson2 = await response2.json();
+      setIsLoaded(true);
+      setError(false);
+      setItemsCollaborative(responseJson2);
+      console.log(itemsCollaborative);
 		} catch (error) {
 			setIsLoaded(true);
 			setError(error);
@@ -30,7 +37,7 @@ const SuggestionList = (props) => {
   };
   
   useEffect(() => {
-    if (userId != undefined) {
+    if (userId !== undefined) {
       setIsLoaded(false);
       fetchMovies();
     }
@@ -54,11 +61,30 @@ const SuggestionList = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {items.map((item) => (
+                {itemsForTypes.map((item) => (
                   <tr key={item.uuid}>
                     <td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
                     <td className="movieListCell" id="bodyRating">
-                      <Rating value={item.AvgRating} precision={0.1} readOnly />
+                      <Rating value={parseFloat(item.AvgRating)} precision={0.1} readOnly />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <h2 style={{margin:15}}>Les autres utilisateurs ont aimé</h2>
+            <table id="moviesTableCollaborative">
+              <thead>
+                <tr>
+                  <th className="movieListHeader" id="headTitleCollaborative">Titre</th>
+                  <th className="movieListHeader" id="headRatingCollaborative">Note moyenne</th>
+                </tr>
+              </thead>
+              <tbody>
+                {itemsCollaborative.map((item) => (
+                  <tr key={item.uuid}>
+                    <td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
+                    <td className="movieListCell" id="bodyRating">
+                      <Rating value={parseFloat(item.AvgRating)} precision={0.1} readOnly />
                     </td>
                   </tr>
                 ))}
