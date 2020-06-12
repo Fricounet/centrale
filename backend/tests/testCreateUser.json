@@ -1,0 +1,9 @@
+{
+    "resource": "/",
+    "path": "/users",
+    "httpMethod": "POST",
+    "body": {
+        "lastname": "Lasalle",
+        "firstname": "Jean"
+    }
+}

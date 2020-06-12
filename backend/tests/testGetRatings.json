@@ -1,0 +1,7 @@
+{
+    "resource": "/",
+    "path": "/ratings",
+    "httpMethod": "GET",
+    "multiValueQueryStringParameters": { "user": ["demateo_jamal"] }
+
+}

@@ -1,28 +1,29 @@
-const uuid = require('uuid');
 const DynamoDB = require('aws-sdk/clients/dynamodb');
 
 module.exports.handle = async event => {
     const data = JSON.parse(event.body);
-
     if (!process.env.tableName) {
         throw new Error('env.tableName must be defined');
     }
-    const dynamoDb = new DynamoDB.DocumentClient();
 
-    const item = {
-        type: 'items',
-        uuid: uuid.v1(),
-        content: data.content,
-        createdAt: Date.now(),
+    const dynamoDb = new DynamoDB.DocumentClient();
+    const user = {
+        ...data,
+        uuid: data.lastname.toLowerCase().replace(/[^a-z0-9]/g, "") + "_" + data.firstname.toLowerCase().replace(/[^a-z0-9]/g, ""),
+        type: "user"
     }
 
     await dynamoDb.put({
         TableName: process.env.tableName,
-        Item: item,
+        Item: user,
     }).promise();
 
     return {
         statusCode: 200,
-        body: JSON.stringify(item),
+        headers:{
+            'Access-Control-Allow-Origin':'*',
+        },
+        body: JSON.stringify(user),
     }
 }
+
