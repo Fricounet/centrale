@@ -16,7 +16,7 @@ const Connection = (props) => {
   const checkUserExists = async (userId) => {
     const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/" + userId);
     const responseJson = await response.json();
-    if (responseJson == 'Not found') {
+    if (responseJson === 'Not found') {
       setUserExists(false);
       setUserIsLoaded(true);
     } else {
@@ -92,7 +92,7 @@ const Registration = (props) => {
     const firstName = inputFisrtName.current.value.toLowerCase().replace(/[^a-zA-Z0-9]/g, " ").replace(' ', '_');
     const userId = name + "_" + firstName;
     const opts = {'lastname': inputName.current.value, 'firstname': inputFisrtName.current.value};
-    const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/", {
+    await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/users/", {
       method: 'post',
       body: JSON.stringify(opts)
     });
