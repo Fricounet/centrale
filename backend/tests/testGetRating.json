@@ -1,0 +1,6 @@
+{
+    "resource": "/",
+    "path": "/getRating",
+    "httpMethod": "GET",
+    "pathParameters": { "id": "eventhorizon:mccully_lawrence" }
+  }

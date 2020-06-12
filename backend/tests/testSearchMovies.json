@@ -1,0 +1,9 @@
+{
+    "resource": "/",
+    "path": "/search",
+    "httpMethod": "GET",
+    "multiValueQueryStringParameters": {
+                                        "type": ["sci-fi"]
+                                        }
+
+}

@@ -7,3 +7,6 @@ jspm_packages
 
 # User specific files
 stage.dev.yml
+
+# Data file
+data.json

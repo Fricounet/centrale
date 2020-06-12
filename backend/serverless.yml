@@ -11,6 +11,7 @@ provider:
         - dynamodb:Query
         - dynamodb:GetItem
         - dynamodb:PutItem
+        - dynamodb:batchWriteItem
       Resource:
         - 'Fn::GetAtt': [Table, Arn]
   environment:
@@ -24,32 +25,132 @@ functions:
           path: hello
           method: get
 
-  get:
-    handler: functions/get.handle
+  getMovie:
+    handler: functions/Movies/getMovie.handle
     events:
       - http:
           method: get
-          path: items/{id}
+          path: movies/{id}
           cors:
             origin: http://localhost:3000
             allowCredentials: true
 
-  create:
-    handler: functions/create.handle
+  createMovie:
+    handler: functions/Movies/createMovie.handle
     events:
       - http:
           method: post
-          path: items
+          path: movies
           cors:
             origin: http://localhost:3000
             allowCredentials: true
 
-  list:
-    handler: functions/list.handle
+  searchMovies:
+    handler: functions/Search/searchMovies.handle
     events:
       - http:
           method: get
-          path: items
+          path: movies/search
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  listMovies:
+    handler: functions/Movies/listMovies.handle
+    events:
+      - http:
+          method: get
+          path: movies
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getUser:
+    handler: functions/Users/getUser.handle
+    events:
+      - http:
+          method: get
+          path: users/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  createUser:
+    handler: functions/Users/createUser.handle
+    events:
+      - http:
+          method: post
+          path: users
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  listUsers:
+    handler: functions/Users/listUsers.handle
+    events:
+      - http:
+          method: get
+          path: users
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  populate:
+    handler: functions/populate.handle
+    events:
+      - http:
+          method: post
+          path: populate
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getRating:
+    handler: functions/Ratings/getRating.handle
+    events:
+      - http:
+          method: get
+          path: ratings/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  createRating:
+    handler: functions/Ratings/createRating.handle
+    events:
+      - http:
+          method: post
+          path: ratings
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getRatings:
+    handler: functions/Ratings/getRatings.handle
+    events:
+      - http:
+          method: get
+          path: ratings
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getRecomOnCriterias:
+    handler: functions/Movies/getRecomOnCriterias.handle
+    events:
+      - http:
+          method: get
+          path: recomOnCriterias/{id}
+          cors:
+            origin: http://localhost:3000
+            allowCredentials: true
+
+  getRecomOnModel:
+    handler: functions/Movies/getRecomOnModel.handle
+    events:
+      - http:
+          method: get
+          path: recomOnModel/{id}
           cors:
             origin: http://localhost:3000
             allowCredentials: true

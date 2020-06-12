@@ -1,0 +1,28 @@
+{
+    "resource": "/",
+    "path": "/movies",
+    "httpMethod": "POST",
+    "body": {
+        "title": "Best movie",
+        "release date": "01-Jan-1995",
+        "unknown": 0,
+        "action": 0,
+        "adventure": 0,
+        "animation": 0,
+        "children": 0,
+        "comedy": 0,
+        "crime": 0,
+        "documentary": 1,
+        "drama": 0,
+        "fantasy": 0,
+        "black-movie": 0,
+        "horror": 0,
+        "musical": 0,
+        "mystery": 0,
+        "romance": 0,
+        "sci-fi": 0,
+        "thriller": 1,
+        "war": 0,
+        "western": 0
+    }
+}

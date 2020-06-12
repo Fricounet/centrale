@@ -1,0 +1,6 @@
+{
+    "resource": "/",
+    "path": "/movie",
+    "httpMethod": "GET",
+    "pathParameters": { "id": "ghost" }
+  }
