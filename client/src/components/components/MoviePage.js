@@ -67,7 +67,7 @@ const MoviePage = (props) => {
       };
     };
     return (
-      typesToDisplay.map((type) => <Chip className={classes.chip} label={type} />)
+      typesToDisplay.map((type) => <Chip key={type} className={classes.chip} label={type} />)
     );
   };
 
