@@ -3,7 +3,6 @@
 }
 
 .HomePage-logo {
-  animation: HomePage-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
@@ -21,13 +20,4 @@
 
 .HomePage-link {
   color: #61dafb;
-}
-
-@keyframes HomePage-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

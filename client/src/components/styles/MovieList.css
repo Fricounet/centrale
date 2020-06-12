@@ -1,0 +1,77 @@
+.pageTitle {
+  color: #61dafb;
+  position: relative;
+  left: 15px;
+}
+
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border: 1px solid #282c34;
+}
+
+.movieListHeader {
+  border-bottom: 1px solid #282c34;
+  background-color: rgba(97, 218, 251, 0.3);
+  height: 30px;
+  vertical-align: middle;
+}
+
+.movieListCell {
+  border-bottom: 1px solid grey;
+  background-color: white;
+  height: 30px;
+  vertical-align: middle;
+}
+
+#headTitle {
+  text-align: left;
+}
+
+#bodyTitle {
+  width: 70%;
+}
+
+#headRating {
+  text-align: middle;
+}
+
+#bodyRating {
+  width: 17%;
+}
+
+.movieLink:link {
+  color: black;
+  text-decoration: none;
+}
+
+.movieLink:visited {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+
+.movieLink:hover {
+  color: #61dafb;
+  text-decoration: underline;
+}
+
+.star-ratings-sprite {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  font-size: 0;
+  height: 21px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 110px;
+  margin: 0 auto;
+}
+
+.star-ratings-sprite-rating {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  background-position: 0 100%;
+  float: left;
+  height: 21px;
+  display:block;
+}
