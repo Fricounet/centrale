@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -15,8 +15,9 @@ const MoviePage = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
- // const [fetchAgain, setFetchAgain] = useState(false);
- // const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
+  const [poster, setPoster] = useState([]);
+  // const [fetchAgain, setFetchAgain] = useState(false);
+  // const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
 
   const { movieId } = useParams();
   const userId = props.location.userId;
@@ -43,21 +44,28 @@ const MoviePage = (props) => {
   const classes = useStyles();
 
   const fetchMovies = async () => {
-		try {
+    try {
       const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/movies/" + movieId);
       const responseJson = await response.json();
+      const movieInfoPoster = await fetch("https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=" + responseJson.title)
+      .then(function(response) {
+        return response.json(); 
+      }).then(function(data) {
+        return data;
+      });
+      setPoster('http://image.tmdb.org/t/p/w500/' + movieInfoPoster.results[0].poster_path);
       setIsLoaded(true);
       setError(false);
       setMovie(responseJson);
-		} catch (error) {
-			setIsLoaded(true);
-			setError(error);
-		}
-	};
+    } catch (error) {
+      setIsLoaded(true);
+      setError(error);
+    }
+  };
 
-	useEffect(() => {
-		setIsLoaded(false);
-		fetchMovies();
+  useEffect(() => {
+    setIsLoaded(false);
+    fetchMovies();
   }, []); // fetchAgain]);
 
   const displayTypes = () => {
@@ -72,13 +80,14 @@ const MoviePage = (props) => {
     );
   };
 
-	const displayMovie = () => {
-		if (error) {
-			return <div>Error: {error.message}</div>;
-		} else if (!isLoaded) {
-			return <div>Loading...</div>;
-		} else {
-			return (
+  const displayMovie = () => {
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      console.log(poster);
+      return (
         <Box>
           <Card className={classes.mainCard}>
             <CardContent>
@@ -92,10 +101,11 @@ const MoviePage = (props) => {
             </CardContent>
             <SaveRating movieId={movieId} userId={userId} />
           </Card>
+          <img src={poster}></img>
         </Box>
-			)
-		}
-	};
+      )
+    }
+  };
 
   return (
     <div className="MoviePage">
