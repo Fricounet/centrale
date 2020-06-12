@@ -17,11 +17,12 @@ const SuggestionList = (props) => {
       setIsLoaded(true);
       setError(false);
       setItemsForTypes(responseJson);
-      const response2 = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/recomOnModel/" + userId);
+      const response2 = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/recomOnCriterias/" + userId);
       const responseJson2 = await response2.json();
       setIsLoaded(true);
       setError(false);
       setItemsCollaborative(responseJson2);
+      console.log(itemsCollaborative);
 		} catch (error) {
 			setIsLoaded(true);
 			setError(error);
@@ -71,11 +72,11 @@ const SuggestionList = (props) => {
               </tbody>
             </table>
             <h2 style={{margin:15}}>Les autres utilisateurs ont aimé</h2>
-            <table id="moviesTable">
+            <table id="moviesTableCollaborative">
               <thead>
                 <tr>
-                  <th className="movieListHeader" id="headTitle">Titre</th>
-                  <th className="movieListHeader" id="headRating">Note moyenne</th>
+                  <th className="movieListHeader" id="headTitleCollaborative">Titre</th>
+                  <th className="movieListHeader" id="headRatingCollaborative">Note moyenne</th>
                 </tr>
               </thead>
               <tbody>
