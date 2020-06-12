@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
+import Rating from '@material-ui/lab/Rating';
 import "../styles/MovieList.css"
 
 const MovieList = (props) => {
@@ -94,6 +95,7 @@ const MovieList = (props) => {
 								<td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
 								<td className="movieListCell" id="bodyRating">
 									<div className="star-ratings-sprite"><span className="star-ratings-sprite-rating" style={{ width: `${item.AvgRating / 5 * 100}%` }}></span></div>
+									{/*<Rating value={item.AvgRating} precision={0.1} readOnly />*/}
 								</td>
 							</tr>
 						))}
