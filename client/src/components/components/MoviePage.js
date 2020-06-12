@@ -15,8 +15,8 @@ const MoviePage = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [movie, setMovie] = useState([]);
-  const [fetchAgain, setFetchAgain] = useState(false);
-  const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
+ // const [fetchAgain, setFetchAgain] = useState(false);
+ // const movieTypes = ['unknown', 'action', 'adventure', 'animation', 'children', 'comedy', 'crime', 'documentary', 'drama', 'fantasy', 'black-movie', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war', 'western'];
 
   const { movieId } = useParams();
   const userId = props.location.userId;
@@ -58,12 +58,12 @@ const MoviePage = (props) => {
 	useEffect(() => {
 		setIsLoaded(false);
 		fetchMovies();
-  }, [fetchAgain]);
+  }, []); // fetchAgain]);
 
   const displayTypes = () => {
     const typesToDisplay = [];
     for (const key in movie) {
-      if (movie[key] == "1") {
+      if (movie[key] === "1") {
         typesToDisplay.push(key);
       };
     };

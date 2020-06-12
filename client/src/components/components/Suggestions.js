@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import "../styles/Suggestions.css"
 
@@ -30,7 +30,7 @@ const SuggestionList = (props) => {
   };
   
   useEffect(() => {
-    if (userId != undefined) {
+    if (userId !== undefined) {
       setIsLoaded(false);
       fetchMovies();
     }
@@ -58,7 +58,7 @@ const SuggestionList = (props) => {
                   <tr key={item.uuid}>
                     <td className="movieListCell" id="bodyTitle">{insertLink(item)}</td>
                     <td className="movieListCell" id="bodyRating">
-                      <Rating value={item.AvgRating} precision={0.1} readOnly />
+                      <Rating value={parseFloat(item.AvgRating)} precision={0.1} readOnly />
                     </td>
                   </tr>
                 ))}

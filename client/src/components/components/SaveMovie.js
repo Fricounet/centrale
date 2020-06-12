@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
@@ -78,7 +78,7 @@ const SaveMovie = () => {
 
   const handleClick = async () => {
     const opts = createOpts();
-    const response = await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
+    await fetch("https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/movies/", {
       method: 'post',
       body: JSON.stringify(opts)
     });
@@ -96,6 +96,7 @@ const SaveMovie = () => {
           <label>Type de film :</label><br />
           {movieTypes.map((type) => (
             <FormControlLabel
+              key={type}
               control={<Checkbox onChange={handleChange} name={type} />}
               label={type}
             />
