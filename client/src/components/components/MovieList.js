@@ -128,10 +128,10 @@ const MovieList = (props) => {
 			};
 			query += "query=" + endQuery
 		};
-		const path = "/movies/search/" + query;
+		const link = {pathname:"/movies/search/" + query, userId: userId};
 		setIsLoaded(false);
 		return (
-			history.push(path)
+			history.push(link)
 		);
 	};
 
