@@ -47,7 +47,7 @@ const MovieList = (props) => {
 	const fetchMovies = async () => {
 		try {
 			var route = "https://ekqiwnhmr7.execute-api.eu-west-1.amazonaws.com/dev/movies";
-			if (search !== 'movies') {
+			if (search !== 'movies' && search !== '') {
 				route += "/search?" + search;
 			};
 			const response = await fetch(route);
