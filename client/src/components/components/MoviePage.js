@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
+import Rating from '@material-ui/lab/Rating';
 import SaveRating from "./SaveRating";
 import "../styles/MoviePage.css";
 
@@ -82,6 +83,7 @@ const MoviePage = (props) => {
           <Card className={classes.mainCard}>
             <CardContent>
               <Typography component="h2">Titre - {movie.title}</Typography>
+              <Rating value={parseFloat(movie.AvgRating)} precision={0.1} readOnly />
               <Typography>Date de sortie : {movie["release date"]}</Typography>
               <Typography>Genres :</Typography>
               <Paper component="ul" className={classes.chipArray}>
